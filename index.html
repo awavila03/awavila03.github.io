@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="leaflet/leaflet.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="leaflet/leaflet.js"></script>
+    <title>GEOAWAVILA</title>
+    <link rel="icon" href="img/logo_geoawavila.png">
+</head>
+<body>
+    <!--MENU ENCABEZADO-->
+    <div class="contenedor-header">
+        <header>
+            <div class="logo">
+                <a href="#">GEOAWAVILA</a>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#inicio" onclick="seleccionar()">INICIO</a></li>
+                    <li><a href="#sobremi" onclick="seleccionar()">SOBRE MI</a></li>
+                    <li><a href="#skills" onclick="seleccionar()">HABILIDADES</a></li>
+                    <li><a href="#portafolio" onclick="seleccionar()">PORTAFOLIO</a></li>
+                    <li><a href="#contacto" onclick="seleccionar()">CONTACTO</a></li>
+                </ul>
+            </nav>
+            <div class="nav-responsive" onclick="mostrarOcultarMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </header>
+    </div>
+
+    <!--SECCION INICIO-->
+    <section id="inicio" class="inicio">
+        <div class="contenedor-banner">
+            <div class="contenedor-img">
+                <img src="img/Foto_Certificado.jpg" alt="">
+            </div>
+            <h1>ANGEL AVILA</h1>
+            <h2>Ingeniero Ambiental - Especialista GIS</h2>
+            <div class="redes">
+                <a href="https://www.facebook.com/angel.avilaarauco.3/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/angelavilaarauco03/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/angelwilliams03/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!--SECCION SOBRE MI-->
+    <section id="sobremi" class="sobremi">
+        <div class="contenedor-seccion">
+            <h2>Sobre Mí</h2>
+            <p><span>Hola, me llamo Angel Avila</span>. Soy una persona apasionada por la aplicación de tecnologías geoespaciales. Mi experiencia se centra en el diseño, desarrollo y gestión de sistemas de información geográfica (SIG) para analizar datos espaciales y tomar decisiones. He trabajado en proyectos de análisis de recursos naturales, planificación urbana y mitigación de impactos ambientales.</p>
+            <div class="fila">
+                <!--datos personales-->
+                <div class="col">
+                    <h3>Datos Personales</h3>
+                    <ul>
+                        <li>
+                            <strong>Cumpleaños</strong>
+                            03 de Enero de 1992
+                        </li>
+                        <li>
+                            <strong>Email</strong>
+                            awavila03@gmail.com
+                        </li>
+                        <li>
+                            <strong>Teléfono</strong>
+                            +51 940 295 151
+                        </li>
+                        <li>
+                            <strong>Ciudad</strong>
+                            Lima, Perú
+                        </li>
+                        <li>
+                            <strong>Lugar de Trabajo</strong>
+                            Coorporación PIZE S.A.C.
+                        </li>
+                        <li>
+                            <strong>Cargo</strong>
+                            <span>Coordinador GIS</span>
+                        </li>
+                    </ul>
+                </div>
+                <!--intereses-->
+                <div class="col">
+                    <h3>Intereses</h3>
+                    <div class="contenedor-intereses">
+                        <div class="intereses">
+                            <i class="fa-solid fa-earth-americas"></i>
+                            <span>GIS</span>
+                        </div>
+                        <div class="intereses">
+                            <i class="fa-solid fa-laptop"></i>
+                            <span>PROGRAMACION</span>
+                        </div>
+                        <div class="intereses">
+                            <i class="fa-solid fa-book-open"></i>
+                            <span>LIBROS</span>
+                        </div>
+                        <div class="intereses">
+                            <i class="fa-solid fa-motorcycle"></i>
+                            <span>MOTOCICLETAS</span>
+                        </div>
+                        <div class="intereses">
+                            <i class="fa-solid fa-plane"></i>
+                            <span>VIAJAR</span>
+                        </div>
+                        <div class="intereses">
+                            <i class="fa-solid fa-person-hiking"></i>
+                            <span>SENDERISMO</span>
+                        </div>
+                        <div class="intereses">
+                            <i class="fa-solid fa-person-biking"></i>
+                            <span>CICLISMO</span>
+                        </div>
+                        <div class="intereses">
+                            <i class="fa-solid fa-person-swimming"></i>
+                            <span>NATACION</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--SECCION HABILIDADES-->
+    <section class="skills" id="skills">
+        <div class="contenedor-seccion">
+            <h2>Habilidades</h2>
+            <div class="fila">
+                <!--Habilidades Técnicas-->
+                <div class="col">
+                    <h3>Habilidades Técnicas</h3>
+                    <div class="skill">
+                        <span>QGIS</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>90%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>ARCGIS</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>80%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>POSTGRESQL - POSTGIS</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>75%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>GEOSERVER</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>75%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>LEAFLET</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>70%</span>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+                <!--Habilidades Técnicas-->
+                <div class="col">
+                    <h3>Habilidades Profesionales</h3>
+                    <div class="skill">
+                        <span>Comunicación</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>80%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>Trabajo en Equipo</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>95%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>Manejo de Grupos</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>95%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>Creatividad</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>85%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>Compromiso</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>90%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--SECCION PORTAFOLIO-->
+    <section id="portafolio" class="portafolio">
+        <div class="contenedor-seccion">
+            <h2>PORTAFOLIO</h2>
+            <div class="galeria">
+                <div class="proyecto">
+                    <div id="map-tumbes" class="map"></div>
+                    <div class="overlay">
+                        <h3>Drenaje Pluvial - Tumbes</h3>
+                        <p>Inventario Predial y de Interferencias</p>
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <div id="map-huarmey" class="map"></div>
+                    <div class="overlay">
+                        <h3>Vía de Evitamiento - Huarmey</h3>
+                        <p>Inventario Predial y de Interferencias</p>
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <div id="map-salaverry" class="map"></div>
+                    <div class="overlay">
+                        <h3>Intercambio Vial - Salaverry</h3>
+                        <p>Inventario Predial y de Interferencias</p>
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <div id="map-viru" class="map"></div>
+                    <div class="overlay">
+                        <h3>Vía de Evitamiento - Virú</h3>
+                        <p>Inventario Predial y de Interferencias</p>
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <div id="map-casma" class="map"></div>
+                    <div class="overlay">
+                        <h3>Vía de Evitamiento - Casma</h3>
+                        <p>Inventario Predial y de Interferencias</p>
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <div id="map-aereotingo" class="map"></div>
+                    <div class="overlay">
+                        <h3>Areopuerto - Tingo María</h3>
+                        <p>Inventario Predial</p>
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <div id="map-drcansas" class="map"></div>
+                    <div class="overlay">
+                        <h3>Defensa Ribereña - Qda. Cansas</h3>
+                        <p>Inventario Predial y de Interferencias</p>
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <div id="map-drchicama" class="map"></div>
+                    <div class="overlay">
+                        <h3>Defensa Ribereña - Río Chicama</h3>
+                        <p>Inventario Predial y de Interferencias</p>
+                    </div>
+                </div>
+                <div class="proyecto">
+                    <div id="map-drviru" class="map"></div>
+                    <div class="overlay">
+                        <h3>Defensa Ribereña - Río Virú</h3>
+                        <p>Inventario Predial y de Interferencias</p>
+                    </div>
+                </div>  
+            </div>       
+        </div>
+    </section>
+
+    <!-- SECCION CONTACTO -->
+    <section id="contacto" class="contacto">
+        <div class="contenedor-seccion">
+            <h2>CONTACTO</h2>
+            <div class="fila">
+                <!-- Formulario -->
+                <form class="col" action="https://formsubmit.co/awavila03@gmail.com" method="POST">
+                    <input type="name" placeholder="Tú Nombre">
+                    <input type="phone" placeholder="Número telefónico">
+                    <input type="email" placeholder="Dirección de correo">
+                    <input type="text" placeholder="Tema">
+                    <textarea name="mensaje" id="mensaje" cols="30" rows="10" placeholder="Mensaje"></textarea>
+                    <button>
+                        Enviar Mensaje<i class="fa-solid fa-paper-plane"></i>
+                        <span class="overlay"></span>
+                    </button>
+                </form>
+                <!-- Mapa -->
+                <div class="col">
+                    <img src="img/ubicacion.png" alt="">
+                    <div class="info">
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-location-dot"></i>
+                                Av. del Parque Nte. 1174, San Borja
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-mobile-screen"></i>
+                                Llamanos: +51 940 295 151                            </li>
+                            <li>
+                                <i class="fa-solid fa-envelope"></i>
+                                Email: awavila03@gmail.com
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        var mapTumbes = L.map ('map-tumbes',{
+            center: [-3.569855, -80.437219],
+            zoom: 12
+        });
+        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapTumbes);
+
+        var mapHuarmey = L.map ('map-huarmey',{
+            center: [-12.046004,-77.030546],
+            zoom: 20
+        });
+        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapHuarmey);
+
+        var mapSalaverry = L.map ('map-salaverry',{
+            center: [-12.046004,-77.030546],
+            zoom: 20
+        });
+        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapSalaverry);
+
+        var mapViru = L.map ('map-viru',{
+            center: [-12.046004,-77.030546],
+            zoom: 20
+        });
+        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapViru);
+
+        var mapCasma = L.map ('map-casma',{
+            center: [-12.046004,-77.030546],
+            zoom: 20
+        });
+        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapCasma);
+
+        var mapAeroTingo = L.map ('map-aereotingo',{
+            center: [-12.046004,-77.030546],
+            zoom: 20
+        });
+        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapAeroTingo);
+
+        var mapDRCansas = L.map ('map-drcansas',{
+            center: [-12.046004,-77.030546],
+            zoom: 20
+        });
+        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapDRCansas);
+        
+        var mapDRChicama = L.map ('map-drchicama',{
+            center: [-12.046004,-77.030546],
+            zoom: 20
+        });
+        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapDRChicama);
+
+        var mapDRViru = L.map ('map-drviru',{
+            center: [-12.046004,-77.030546],
+            zoom: 20
+        });
+        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapDRViru);
+    </script>
+</body>
+</html>
