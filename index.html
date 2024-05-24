@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="leaflet/leaflet.css">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
     <script src="leaflet/leaflet.js"></script>
+    <script src="script.js"></script>
+    
     <title>GEOAWAVILA</title>
     <link rel="icon" href="img/logo_geoawavila.png">
 </head>
@@ -78,7 +79,7 @@
                         </li>
                         <li>
                             <strong>Lugar de Trabajo</strong>
-                            Corporación PIZE S.A.C.
+                            Coorporación PIZE S.A.C.
                         </li>
                         <li>
                             <strong>Cargo</strong>
@@ -231,63 +232,63 @@
             <h2>PORTAFOLIO</h2>
             <div class="galeria">
                 <div class="proyecto">
-                    <div id="map-tumbes" class="map"></div>
+                    <img src="img/Imagen1.jpg" alt="">
                     <div class="overlay">
-                        <h3>Drenaje Pluvial - Tumbes</h3>
+                        <a href="DP-Tumbes.html"><h3>Drenaje Pluvial - Tumbes</h3></a>
                         <p>Inventario Predial y de Interferencias</p>
                     </div>
                 </div>
                 <div class="proyecto">
-                    <div id="map-huarmey" class="map"></div>
+                    <img src="img/Imagen2.JPG" alt="">
                     <div class="overlay">
                         <h3>Vía de Evitamiento - Huarmey</h3>
                         <p>Inventario Predial y de Interferencias</p>
                     </div>
                 </div>
                 <div class="proyecto">
-                    <div id="map-salaverry" class="map"></div>
+                    <img src="img/Imagen3.jpg" alt="">
                     <div class="overlay">
                         <h3>Intercambio Vial - Salaverry</h3>
                         <p>Inventario Predial y de Interferencias</p>
                     </div>
                 </div>
                 <div class="proyecto">
-                    <div id="map-viru" class="map"></div>
+                    <img src="img/Imagen4.jpg" alt="">
                     <div class="overlay">
                         <h3>Vía de Evitamiento - Virú</h3>
                         <p>Inventario Predial y de Interferencias</p>
                     </div>
                 </div>
                 <div class="proyecto">
-                    <div id="map-casma" class="map"></div>
+                    <img src="img/Imagen5.jpg" alt="">
                     <div class="overlay">
                         <h3>Vía de Evitamiento - Casma</h3>
                         <p>Inventario Predial y de Interferencias</p>
                     </div>
                 </div>
                 <div class="proyecto">
-                    <div id="map-aereotingo" class="map"></div>
+                    <img src="img/Imagen6.jpg" alt="">
                     <div class="overlay">
                         <h3>Areopuerto - Tingo María</h3>
                         <p>Inventario Predial</p>
                     </div>
                 </div>
                 <div class="proyecto">
-                    <div id="map-drcansas" class="map"></div>
+                    <img src="img/Imagen7.jpg" alt="">
                     <div class="overlay">
                         <h3>Defensa Ribereña - Qda. Cansas</h3>
                         <p>Inventario Predial y de Interferencias</p>
                     </div>
                 </div>
                 <div class="proyecto">
-                    <div id="map-drchicama" class="map"></div>
+                    <img src="img/Imagen8.jpg" alt="">
                     <div class="overlay">
                         <h3>Defensa Ribereña - Río Chicama</h3>
                         <p>Inventario Predial y de Interferencias</p>
                     </div>
                 </div>
                 <div class="proyecto">
-                    <div id="map-drviru" class="map"></div>
+                    <img src="img/Imagen9.jpg" alt="">
                     <div class="overlay">
                         <h3>Defensa Ribereña - Río Virú</h3>
                         <p>Inventario Predial y de Interferencias</p>
@@ -325,7 +326,8 @@
                             </li>
                             <li>
                                 <i class="fa-solid fa-mobile-screen"></i>
-                                Llamanos: +51 940 295 151                            </li>
+                                Llamanos: +51 940 295 151
+                            </li>
                             <li>
                                 <i class="fa-solid fa-envelope"></i>
                                 Email: awavila03@gmail.com
@@ -336,60 +338,19 @@
             </div>
         </div>
     </section>
-    <script>
-        var mapTumbes = L.map ('map-tumbes',{
-            center: [-3.569855, -80.437219],
-            zoom: 12
-        });
-        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapTumbes);
+    
+    
+    <!-- Footer -->
+    <footer>
+        <a href="#inicio" class="arriba"><i class="fa-solid fa-angles-up"></i></a>
+        <div class="redes">
+            <a href="https://www.facebook.com/angel.avilaarauco.3/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/angelavilaarauco03/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/angelwilliams03/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </footer>
 
-        var mapHuarmey = L.map ('map-huarmey',{
-            center: [-12.046004,-77.030546],
-            zoom: 20
-        });
-        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapHuarmey);
-
-        var mapSalaverry = L.map ('map-salaverry',{
-            center: [-12.046004,-77.030546],
-            zoom: 20
-        });
-        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapSalaverry);
-
-        var mapViru = L.map ('map-viru',{
-            center: [-12.046004,-77.030546],
-            zoom: 20
-        });
-        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapViru);
-
-        var mapCasma = L.map ('map-casma',{
-            center: [-12.046004,-77.030546],
-            zoom: 20
-        });
-        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapCasma);
-
-        var mapAeroTingo = L.map ('map-aereotingo',{
-            center: [-12.046004,-77.030546],
-            zoom: 20
-        });
-        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapAeroTingo);
-
-        var mapDRCansas = L.map ('map-drcansas',{
-            center: [-12.046004,-77.030546],
-            zoom: 20
-        });
-        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapDRCansas);
-        
-        var mapDRChicama = L.map ('map-drchicama',{
-            center: [-12.046004,-77.030546],
-            zoom: 20
-        });
-        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapDRChicama);
-
-        var mapDRViru = L.map ('map-drviru',{
-            center: [-12.046004,-77.030546],
-            zoom: 20
-        });
-        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapDRViru);
-    </script>
+    
+   
 </body>
 </html>
