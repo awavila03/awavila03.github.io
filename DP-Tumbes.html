@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="leaflet/leaflet.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="leaflet/leaflet.js"></script>
+    <script src="script.js"></script>
+    <title>GEOAWAVILA DP-Tumbes</title>
+    <link rel="icon" href="img/logo_geoawavila.png">
+</head>
+<body>
+    <!--MENU ENCABEZADO-->
+    <div class="contenedor-header">
+        <header>
+            <div class="logo">
+                <a href="#">GEOAWAVILA</a>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html#inicio" onclick="seleccionar()">INICIO</a></li>
+                    <li><a href="index.html#sobremi" onclick="seleccionar()">SOBRE MI</a></li>
+                    <li><a href="index.html#skills" onclick="seleccionar()">HABILIDADES</a></li>
+                    <li><a href="index.html#portafolio" onclick="seleccionar()">PORTAFOLIO</a></li>
+                    <li><a href="index.html#contacto" onclick="seleccionar()">CONTACTO</a></li>
+                </ul>
+            </nav>
+            <div class="nav-responsive" onclick="mostrarOcultarMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </header>
+    </div>
+    <section class="seccion-mapa">
+        <div class="contenedor-seccion">
+            <div id="mapa-tumbes" class="mapas"></div>
+        </div>
+        <div class="descripcion">
+            <H2>DRENAJE PLUVIAL DE LA CIUDAD DE TUMBES</H2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, nostrum. Aut impedit, at reprehenderit voluptate delectus officiis quae natus voluptates nemo blanditiis quod, animi explicabo, et sit esse. Error doloribus qui at totam, reiciendis earum, rem nulla magni hic aliquam pariatur porro eum a quis et modi sequi accusamus eaque dolorem delectus. Doloremque, adipisci ad. Dignissimos aliquam nobis beatae nostrum magni blanditiis minima modi voluptates ut aspernatur. Eos assumenda ipsa, tempore aut similique quo obcaecati alias? Eligendi iure illo deleniti maiores ipsam? Ipsam quas consequatur ipsum! Odit, corrupti officiis? Molestias alias magnam quidem consectetur quo asperiores inventore repellendus repudiandae maiores, magni eveniet nesciunt. Laudantium nemo voluptas error sed repellat nobis quia dolorem nulla pariatur, maxime perferendis blanditiis officiis adipisci quis odit itaque sapiente facere similique ipsam assumenda beatae quas ratione. Commodi minus doloribus molestias esse? Eius beatae similique quisquam possimus repellendus. Maxime distinctio porro pariatur, expedita doloremque, reiciendis sunt velit laudantium voluptatibus animi a impedit aliquam at rerum saepe, qui modi exercitationem totam? Recusandae eius, in perferendis accusantium placeat fuga exercitationem incidunt magnam vel cumque dolorum repellat. Nihil fugiat esse dolorem voluptas vitae aspernatur dignissimos? Voluptas error recusandae architecto provident in maxime odio quos eveniet sit optio totam quibusdam, nihil eaque quia fuga eius voluptatum nesciunt, assumenda minima sed eum perferendis. Ipsam numquam molestias fuga. Iure officiis repudiandae illum optio in. Distinctio praesentium commodi voluptates, necessitatibus maxime, vero aperiam libero totam quaerat mollitia consequuntur debitis! Quisquam earum aut incidunt veritatis ipsa ad repudiandae velit sapiente autem. Nisi tenetur quo placeat recusandae ex exercitationem ad assumenda, accusantium harum, magni reiciendis qui consequuntur? Deserunt quia eius hic illo laboriosam vel eum omnis voluptate, quibusdam quo repudiandae aliquam molestias ad, cupiditate dolores esse reiciendis tempora perferendis atque soluta corporis cum! Labore voluptas reprehenderit, neque ex error dolorum odio repellat id nisi. Aliquam nam eaque dolorem quia eveniet ea, vitae modi quos animi earum dolor id harum iusto alias reprehenderit et dignissimos, fugiat blanditiis neque, voluptates repellendus sed? Quaerat tempora laborum soluta perspiciatis exercitationem modi reiciendis adipisci sunt deserunt assumenda! Doloribus magni fuga nesciunt placeat quis aliquid veniam iusto at cumque facere, eos ea officiis, mollitia reiciendis unde officia dolor voluptate voluptas odit porro similique sunt possimus nobis. Laboriosam in soluta dignissimos veniam qui impedit, nam molestiae obcaecati laudantium corrupti perferendis deleniti, quis incidunt ipsa aut cumque error modi reiciendis temporibus quaerat ea. Laboriosam, suscipit? Aliquam ab accusantium aspernatur nam facilis quia error, perferendis a aliquid commodi impedit, natus doloremque voluptate vero quis eveniet assumenda voluptatem repellat cumque, accusamus distinctio ullam aut! Pariatur enim, vel aliquid atque sit adipisci autem ab eaque, in dolorem vero voluptatum provident natus veritatis veniam? Exercitationem itaque eum debitis. Quos doloremque ducimus adipisci quaerat rerum dicta id esse, labore harum, deleniti recusandae, placeat aspernatur eligendi consequuntur perferendis odio molestiae provident beatae? Porro cupiditate sapiente, expedita ad consequuntur tenetur debitis aliquam enim ipsum quisquam voluptatem laborum, magni natus, mollitia delectus. Itaque sequi tempore, quo quibusdam facilis tenetur perferendis delectus culpa iusto velit voluptatibus fugiat, cupiditate rerum saepe odio asperiores doloremque.</p>
+        </div>    
+    </section>
+    <script>
+        var mapTumbes = L.map('mapa-tumbes',{
+            center: [-3.571762, -80.436827],
+            zoom: 13
+        });
+
+        //Agregar MapaBase OpenStreetMap
+        var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+        //Agregar MapaBase Google Satélite
+        var gsatelite = L.tileLayer("http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}");
+
+        //Agregar MapaBase Google Maps
+        var gmaps = L.tileLayer("https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}").addTo(mapTumbes);
+
+        //Agregar MapaBase Google Híbrido
+        var ghybrid = L.tileLayer("https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}");
+
+        //Agregar controlador de capas
+        var baseMaps = {
+            "GoogleMaps": gmaps,
+            "GoogleSatelite": gsatelite,
+            "GoogleHybrid": ghybrid,
+            "OpenStreetMap": osm,
+        }
+
+        L.control.layers(baseMaps).addTo(mapTumbes);
+
+    </script>
+    
+
+
+
+
+    
+</body>
+</html>
