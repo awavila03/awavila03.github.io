@@ -42,7 +42,7 @@ window.onscroll = function(){
 }
 
 //Mapa del Geoportal
-var map = L.map('map').setView([-9.1457, -74.3766], 6);
+var map = L.map('map').setView([-9.1457, -74.3766], 5);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
