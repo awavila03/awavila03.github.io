@@ -40,10 +40,3 @@ function efectoHabilidades(){
 window.onscroll = function(){
     efectoHabilidades();
 }
-
-//Mapa del Geoportal
-var map = L.map('map').setView([-9.1457, -74.3766], 5);
-
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);

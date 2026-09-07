@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/leaflet.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/leaflet.js"></script>
-    <script src="js/scriptt.js"></script>
+    <script src="js/leaflet.js" defer></script>
+    <script src="js/scriptt.js" defer></script>
+    <script src="js/proyectos-data.js" defer></script>
+    <script src="js/portafolio.js" defer></script>
 </head>
 <body>
     <!--MENU ENCABEZADO-->
@@ -77,7 +79,7 @@
                         </li>
                         <li>
                             <strong>Lugar de Trabajo</strong>
-                            Proyectos Personales
+                            GEOAVILA
                         </li>
                         <li>
                             <strong>Cargo</strong>
@@ -287,7 +289,7 @@
                     </div>
                 </div>
             </div>
-            <a href="documentos/CV Angel Williams Avila Arauco.pdf" target="_blank">
+            <a href="documentos/CV Angel Avila 2026.pdf" target="_blank">
                 <button>
                     Descargar CV <i class="fa-solid fa-download"></i>
                     <span class="overlay"></span>
@@ -301,78 +303,36 @@
         <div class="contenedor-seccion">
             <h2>PORTAFOLIO</h2>
             <div class="galeria">
-                <div class="proyecto">
-                    <img src="images/Imagen1.jpg" alt="">
-                    <div class="overlay">
-                        <h3>Drenaje Pluvial - Tumbes</h3>
-                        <p>Inventario Predial y de Interferencias</p>
-                    </div>
-                </div>
-                <div class="proyecto">
-                    <img src="images/Imagen2.JPG" alt="">
-                    <div class="overlay">
-                        <h3>Vía de Evitamiento - Huarmey</h3>
-                        <p>Inventario Predial y de Interferencias</p>
-                    </div>
-                </div>
-                <div class="proyecto">
-                    <img src="images/Imagen3.jpg" alt="">
-                    <div class="overlay">
-                        <h3>Intercambio Vial - Salaverry</h3>
-                        <p>Inventario Predial y de Interferencias</p>
-                    </div>
-                </div>
-                <div class="proyecto">
-                    <img src="images/Imagen4.jpg" alt="">
-                    <div class="overlay">
-                        <h3>Vía de Evitamiento - Virú</h3>
-                        <p>Inventario Predial y de Interferencias</p>
-                    </div>
-                </div>
-                <div class="proyecto">
-                    <img src="images/Imagen5.jpg" alt="">
-                    <div class="overlay">
-                        <h3>Vía de Evitamiento - Casma</h3>
-                        <p>Inventario Predial y de Interferencias</p>
-                    </div>
-                </div>
-                <div class="proyecto">
-                    <img src="images/Imagen6.jpg" alt="">
-                    <div class="overlay">
-                        <h3>Areopuerto - Tingo María</h3>
-                        <p>Inventario Predial</p>
-                    </div>
-                </div>
-                <div class="proyecto">
-                    <img src="images/Imagen7.jpg" alt="">
-                    <div class="overlay">
-                        <h3>Defensa Ribereña - Qda. Cansas</h3>
-                        <p>Inventario Predial y de Interferencias</p>
-                    </div>
-                </div>
-                <div class="proyecto">
-                    <img src="images/Imagen8.jpg" alt="">
-                    <div class="overlay">
-                        <h3>Defensa Ribereña - Río Chicama</h3>
-                        <p>Inventario Predial y de Interferencias</p>
-                    </div>
-                </div>
-                <div class="proyecto">
-                    <img src="images/Imagen9.jpg" alt="">
-                    <div class="overlay">
-                        <h3>Defensa Ribereña - Río Virú</h3>
-                        <p>Inventario Predial y de Interferencias</p>
-                    </div>
-                </div>  
-            </div>       
-        </div>
-        <a href="geoportal.html" id="button-portafolio">
-            <button>
-                Ir a Geoportal <i class="fa-solid fa-right-to-bracket"></i>
+                <!-- Las tarjetas se generan solas desde js/portafolio.js -->
+            </div>
+            <button id="btn-ver-mas">
+                <span class="texto-boton">Ver más proyectos</span>
                 <span class="overlay"></span>
             </button>
-        </a>
+        </div>
     </section>
+
+    <!-- MODAL DE DETALLE DE PROYECTO -->
+    <div id="modal-proyecto" class="modal oculto">
+        <div class="modal-contenido">
+            <button class="cerrar" onclick="cerrarDetalle()">&times;</button>
+            <div class="modal-info">
+                <h2 id="modal-titulo"></h2>
+                <p id="modal-fechas" class="modal-fechas"></p>
+                <img id="modal-imagen" class="modal-imagen" src="" alt="">
+
+                <p class="dato"><span class="etiqueta">Tipo de Proyecto:</span> <span id="modal-categoria"></span></p>
+                <p class="dato"><span class="etiqueta">Titular:</span> <span id="modal-cliente"></span></p>
+                <p class="dato"><span class="etiqueta">Empresa:</span> <span id="modal-empresa"></span></p>
+
+                <p class="etiqueta titulo-descripcion">Descripción:</p>
+                <div id="modal-descripcion"></div>
+            </div>
+            <div class="modal-mapa">
+                <div id="mapa-detalle"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- SECCION CONTACTO -->
     <section id="contacto" class="contacto">
