@@ -1,6 +1,6 @@
 # Portafolio - GeoAvila
 
-Portafolio personal de **Angel Ávila**, especialista GIS especializado en diagnóstico de interferencias de infraestructura (defensas ribereñas, vías, drenaje pluvial).
+Portafolio personal de **Angel Avila**, especialista GIS especializado en diagnóstico de interferencias de infraestructura (defensas ribereñas, vías, drenaje pluvial).
 
 🔗 [awavila03.github.io](https://awavila03.github.io)
 
@@ -48,4 +48,4 @@ Sitio estático (HTML/CSS/JS vanilla) alojado en GitHub Pages. Presenta una gale
 
 ## Autor
 
-Angel Ávila — GIS Specialist
+Angel Avila — GIS Specialist
