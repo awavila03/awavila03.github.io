@@ -18,6 +18,7 @@ Sitio estático (HTML/CSS/JS vanilla) alojado en GitHub Pages. Presenta una gale
 - **Cierre de modal**: por botón, clic fuera del modal, o tecla Esc.
 
 ## Estructura del proyecto
+```text
 ├── index.htm # Página principal (todas las secciones del portafolio)
 ├── css/
 │ ├── style.css # Estilos generales del sitio
@@ -27,8 +28,9 @@ Sitio estático (HTML/CSS/JS vanilla) alojado en GitHub Pages. Presenta una gale
 │ ├── proyectos-data.js # Datos de cada proyecto (fuente de la galería)
 │ ├── portafolio.js # Render de galería, paginación y modal de detalle
 │ └── leaflet.js # Librería Leaflet
-├── data/ # GeoJSON de cada proyecto (en progreso)
+├── data/ # múltiples capas GeoJSON por proyecto (en progreso)
 └── images/ # Fotografías e imágenes de portada
+```
 
 ## Stack técnico
 
