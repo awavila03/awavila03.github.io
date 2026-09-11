@@ -11,7 +11,7 @@ Sitio estático (HTML/CSS/JS vanilla) alojado en GitHub Pages. Presenta una gale
 ## Características
 
 - **Galería dinámica de proyectos**: se renderizan desde un array de datos (`js/proyectos-data.js`), no están hardcodeados en el HTML.
-- **Paginación "Ver más / Ver menos"**: muestra los 3 proyectos más recientes por defecto, con opción de expandir a todos.
+- **Paginación "Ver más / Ver menos"**: muestra los 6 proyectos más recientes por defecto, con opción de expandir a todos.
 - **Modal de detalle con vista dividida**: al hacer clic en un proyecto, se abre una ventana con la información (cliente, empresa, descripción, viñetas de trabajo técnico) a la izquierda y un mapa Leaflet interactivo a la derecha.
 - **Múltiples capas GeoJSON por proyecto**: cada proyecto puede tener varias capas (levantamiento, polígonos finales, estructuras) cargadas de forma independiente, con selector de capas cuando hay más de una.
 - **Popups con atributos de campo**: las estructuras levantadas muestran su tipificación y fotografía al hacer clic, usando las propiedades del GeoJSON exportado desde QGIS.

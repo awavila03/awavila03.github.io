@@ -16,27 +16,41 @@ function seleccionar(){
     menuVisible = false;
 }
 
-//Funcion que aplica las animaciones de las habilidades
-function efectoHabilidades(){
-    var skills = document.getElementById("skills");
-    var distancia_skills = window.innerHeight - skills.getBoundingClientRect().top;
-    if(distancia_skills >= 300){
-        let habilidades = document.getElementsByClassName("progreso");
-            habilidades[0].classList.add("qgis");
-            habilidades[1].classList.add("arcgis");
-            habilidades[2].classList.add("postgresql");
-            habilidades[3].classList.add("geoserver");
-            habilidades[4].classList.add("leaflet");
-            habilidades[5].classList.add("comunicacion");
-            habilidades[6].classList.add("tequipo");
-            habilidades[7].classList.add("mgrupos");
-            habilidades[8].classList.add("creatividad");
-            habilidades[9].classList.add("compromiso");
+// Envía el formulario de contacto sin abandonar la página
+const formularioContacto = document.getElementById("formulario-contacto");
+const mensajeFormulario = document.getElementById("mensaje-formulario");
+
+formularioContacto.addEventListener("submit", async function(evento) {
+    evento.preventDefault();
+
+    const datosFormulario = new FormData(formularioContacto);
+
+    mensajeFormulario.textContent = "Enviando mensaje...";
+    mensajeFormulario.classList.add("visible");
+
+    try {
+        const respuesta = await fetch(formularioContacto.action, {
+            method: "POST",
+            body: datosFormulario,
+            headers: {
+                Accept: "application/json"
+            }
+        });
+
+        if (!respuesta.ok) {
+            throw new Error("No se pudo enviar el formulario");
+        }
+
+        mensajeFormulario.textContent = "Mensaje enviado correctamente.";
+        mensajeFormulario.classList.add("visible");
+        formularioContacto.reset();
+
+    } catch (error) {
+        mensajeFormulario.textContent = "No se pudo enviar el mensaje. Inténtalo nuevamente.";
+        mensajeFormulario.classList.add("visible");
     }
-}
 
-
-//detecto el scrolling para aplicar la animacion de la barra de habilidades
-window.onscroll = function(){
-    efectoHabilidades();
-}
+    setTimeout(() => {
+    mensajeFormulario.classList.remove("visible");
+    }, 4000);
+});

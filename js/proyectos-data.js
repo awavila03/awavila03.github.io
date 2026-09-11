@@ -66,7 +66,7 @@ const proyectos = [
     cliente: "Autopista del Norte S.A.C.",
     imagen: "images/Imagen2.JPG",
     descripcionCorta: "Inventario de interferencias",
-    descripcionLarga: "Primer tramo del contrato ''Elaboración del Inventario de Interferencias y Predios sin liberar del Intercambio Vial Salaverry; y las Vías de Evitamiento Huarmey y Virú, de la Concesión Red Vial 4: el inventario de interferencias y predios sin liberar de la vía de evitamiento de Huarmey, el más al sur de los tres. Aplicamos la misma base de datos geoespacial centralizada y los flujos QField/PostgreSQL/PostGIS desarrollados en Tumbes, avanzando de sur a norte a lo largo de los tres tramos del contrato.",
+    descripcionLarga: "Lideré el equipo técnico para el levantamiento de interferencias en el primer tramo del contrato ''Elaboración del Inventario de Interferencias y Predios sin liberar del Intercambio Vial Salaverry; y las Vías de Evitamiento Huarmey y Virú, de la Concesión Red Vial 4. Aplicamos la misma estructura de base de datos geoespacial centralizada y los flujos QField/PostgreSQL/PostGIS desarrollados en Tumbes, avanzando de sur a norte a lo largo de los tres tramos del contrato.",
     puntosClave: [
       "Primer tramo de un barrido de sur a norte junto con Salaverry y Virú, bajo un mismo contrato",
       "Servicios WFS/WMS con GeoServer conectados a PostgreSQL para consultas en tiempo real",
@@ -91,7 +91,7 @@ const proyectos = [
     cliente: "Autopista del Norte S.A.C.",
     imagen: "images/Imagen3.jpg",
     descripcionCorta: "Inventario de interferencias",
-    descripcionLarga: "Segundo tramo del contrato ''Elaboración del Inventario de Interferencias y Predios sin liberar del Intercambio Vial Salaverry; y las Vías de Evitamiento Huarmey y Virú, de la Concesión Red Vial 4: el inventario de interferencias y predios sin liberar del intercambio vial Salaverry. Continuamos el barrido de sur a norte iniciado en Huarmey, reutilizando la base de datos geoespacial centralizada y los flujos QField/PostgreSQL/PostGIS desarrollados en Tumbes.",
+    descripcionLarga: "Lideré el equipo técnico para el levantamiento de interferencias en el segundo tramo del contrato ''Elaboración del Inventario de Interferencias y Predios sin liberar del Intercambio Vial Salaverry; y las Vías de Evitamiento Huarmey y Virú, de la Concesión Red Vial 4. Continuamos el barrido de sur a norte iniciado en Huarmey, reutilizando la misma estructura de base de datos geoespacial centralizada y los flujos QField/PostgreSQL/PostGIS desarrollados en Tumbes.",
     puntosClave: [
       "Segundo tramo de un barrido de sur a norte junto con Huarmey y Virú, bajo un mismo contrato",
       "Servicios WFS/WMS con GeoServer conectados a PostgreSQL para consultas en tiempo real",
@@ -111,10 +111,23 @@ const proyectos = [
   {
     id: "via-viru",
     titulo: "Vía de Evitamiento Virú",
-    categoria: "Inventario Predial y de Interferencias",
+    categoria: "Infraestructura Vial",
+    empresa: "Corporación PIZE S.A.C.",
+    cliente: "Autopista del Norte S.A.C.",
     imagen: "images/Imagen4.jpg",
-    descripcionLarga: "Pendiente de completar.",
-    geojson: null,
+    descripcionCorta: "Identificación y Diagnóstico de interferencias",
+    descripcionLarga: "Último tramo del contrato ''Elaboración del Inventario de Interferencias y Predios sin liberar del Intercambio Vial Salaverry; y las Vías de Evitamiento Huarmey y Virú, de la Concesión Red Vial 4: el inventario de interferencias y predios sin liberar de la vía de evitamiento de Virú, el punto más al norte del barrido. Cerramos así el contrato, tras avanzar de sur a norte desde Huarmey, aplicando la misma base de datos geoespacial y los flujos QField/PostgreSQL/PostGIS consolidados en Tumbes.",
+    puntosClave: [
+      "Tramo final de un barrido de sur a norte junto con Huarmey y Salaverry, bajo un mismo contrato",
+      "Servicios WFS/WMS con GeoServer conectados a PostgreSQL para consultas en tiempo real",
+      "Elaboración de planos finales en ArcGIS según requerimiento del tramo"
+    ],
+    capas: [
+      { nombre: "lev_campo",
+        archivo: "data/rimac-levantamiento.geojson",
+        color: "#3498db"
+      }
+    ],
     centro: [-8.4167, -78.75],
     zoom: 12,
     fecha_inicio: "2023-09",
@@ -123,15 +136,29 @@ const proyectos = [
   {
     id: "via-casma",
     titulo: "Vía de Evitamiento - Casma",
-    categoria: "Inventario Predial y de Interferencias",
+    categoria: "Infraestructura Vial",
+    empresa: "Corporación PIZE S.A.C.",
+    cliente: "Autopista del Norte S.A.C.",
     imagen: "images/Imagen5.jpg",
-    descripcionLarga: "Pendiente de completar.",
-    geojson: null,
+    descripcionCorta: "Identificación y Diagnóstico de interferencias",
+    descripcionLarga: "Encargo en simultáneo con el proyecto de Tumbes y Corrales, para un nuevo cliente, Autopista del Norte, aplicando la misma metodología en la Concesión Red Vial 4 — en este caso, el inventario de predios e interferencias de la vía de evitamiento de Casma. Reutilizamos la base de datos geoespacial centralizada y los flujos de trabajo con QField y PostgreSQL/PostGIS que veníamos consolidando en Tumbes, adaptándolos a esta nueva zona y cliente.",
+    puntosClave: [
+      "Reutilización de la base de datos geoespacial centralizada, con esquemas e índices espaciales heredados de Tumbes",
+      "Formularios QField adaptados a la nueva zona y cliente",
+      "Fichas técnicas automatizadas con QGIS Atlas + funciones aggregate desde PostgreSQL"
+    ],
+    capas: [
+      { nombre: "lev_campo",
+        archivo: "data/rimac-levantamiento.geojson",
+        color: "#3498db"
+      }
+    ],
     centro: [-9.4739, -78.3006],
     zoom: 12,
-    fecha: "2024-05-01"
+    fecha_inicio: "2023-06",
+    fecha_final: "2023-17"
   },
-  {
+  /* {
     id: "aeropuerto-tingo-maria",
     titulo: "Aeropuerto - Tingo María",
     categoria: "Inventario Predial",
@@ -141,7 +168,7 @@ const proyectos = [
     centro: [-9.2965, -75.9955],
     zoom: 13,
     fecha: "2024-06-01"
-  },
+  }, */
   {
     id: "defensa-qda-cansas",
     titulo: "Defensa Ribereña - Qda. Cansas",
@@ -175,5 +202,5 @@ const proyectos = [
     zoom: 12,
     fecha: "2024-09-01"
   },
-  // Agrega aquí tu proyecto nuevo/faltante, mismo formato
+
 ];

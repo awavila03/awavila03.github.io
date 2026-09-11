@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +13,7 @@
     <script src="js/proyectos-data.js" defer></script>
     <script src="js/portafolio.js" defer></script>
 </head>
+
 <body>
     <!--MENU ENCABEZADO-->
     <header class="contenedor-header">
@@ -23,7 +24,7 @@
             <ul>
                 <li><a href="#inicio" onclick="seleccionar()">INICIO</a></li>
                 <li><a href="#sobremi" onclick="seleccionar()">SOBRE MI</a></li>
-                <li><a href="#skills" onclick="seleccionar()">HABILIDADES</a></li>
+                <li><a href="#habilidades" onclick="seleccionar()">HABILIDADES</a></li>
                 <li><a href="#curriculum" onclick="seleccionar()">CURRICULUM</a></li>
                 <li><a href="#portafolio" onclick="seleccionar()">PORTAFOLIO</a></li>
                 <li><a href="#contacto" onclick="seleccionar()">CONTACTO</a></li>
@@ -39,13 +40,20 @@
         <div class="banner">
             <img src="images/foto-angel.jpg" alt="foto de perfil de angel">
             <h1>ANGEL WILLIAMS AVILA ARAUCO</h1>
-            <h2>Ingeniero Ambiental - Especialista GIS</h2>
+            <h2>Especialista GIS | Egresado de Ingeniería Ambiental</h2>
             <div class="redes">
-                <a href="https://www.facebook.com/angel.avilaarauco.3/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://www.linkedin.com/in/angelavilaarauco03/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/angelwilliams03/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://gisconangel.blogspot.com/" target="_blank"><i class="fa-brands fa-blogger-b"></i></a>
-                <a href="https://github.com/awavila03" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/angelavilaarauco03/" target="_blank">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/awavila03" target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.youtube.com/@geoavila03" target="_blank">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://www.tiktok.com/@geoavila92?is_from_webapp=1&sender_device=pc" target="_blank">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -54,176 +62,96 @@
     <section id="sobremi" class="sobremi">
         <div class="contenedor-seccion">
             <h2>SOBRE MI</h2>
-            <p><span>Hola, me llamo Angel Avila</span>. Soy una persona apasionada por la aplicación de tecnologías geoespaciales. Mi experiencia se centra en el diseño, desarrollo y gestión de sistemas de información geográfica (SIG) para analizar datos espaciales y tomar decisiones. He trabajado en proyectos de análisis de recursos naturales, planificación urbana y mitigación de impactos ambientales.</p>
-            <div class="fila">
+            <p>Hola, soy <span>Angel Avila Arauco.</span> Especialista GIS con más de 5 años de experiencia en proyectos de infraestructura, con experiencia principalmente en gestión predial e interferencias. He liderado equipos y diseñado flujos para captura, análisis, control de calidad y gestión de datos espaciales con QGIS, PostgreSQL/PostGIS, QField, Mergin Maps y GeoServer, además de trabajar con el ecosistema Esri mediante ArcGIS Pro, ArcGIS Online, Survey123 y Field Maps. Mi fortaleza está en entender la lógica de cada proyecto y adaptar el GIS a sus necesidades, combinando datos, automatización y herramientas geoespaciales para mejorar procesos y apoyar la toma de decisiones.</p>
 
-                <!--datos personales-->
-                <div class="col">
-                    <h3>Datos Personales</h3>
-                    <ul>
-                        <li>
-                            <strong>Cumpleaños</strong>
-                            03 de Enero de 1992
-                        </li>
-                        <li>
-                            <strong>Email</strong>
-                            awavila03@gmail.com
-                        </li>
-                        <li>
-                            <strong>Teléfono</strong>
-                            +51 940 295 151
-                        </li>
-                        <li>
-                            <strong>Ciudad</strong>
-                            Lima, Perú
-                        </li>
-                        <li>
-                            <strong>Lugar de Trabajo</strong>
-                            GEOAVILA
-                        </li>
-                        <li>
-                            <strong>Cargo</strong>
-                            <span>Especialista GIS</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!--intereses-->
-                <div class="col">
-                    <h3>Intereses</h3>
-                    <div class="contenedor-intereses">
-                        <div class="intereses">
-                            <i class="fa-solid fa-earth-americas"></i>
-                            <span>GIS</span>
-                        </div>
-                        <div class="intereses">
-                            <i class="fa-solid fa-laptop"></i>
-                            <span>PROGRAMACION</span>
-                        </div>
-                        <div class="intereses">
-                            <i class="fa-solid fa-book-open"></i>
-                            <span>LIBROS</span>
-                        </div>
-                        <div class="intereses">
-                            <i class="fa-solid fa-motorcycle"></i>
-                            <span>MOTOCICLETAS</span>
-                        </div>
-                        <div class="intereses">
-                            <i class="fa-solid fa-plane"></i>
-                            <span>VIAJAR</span>
-                        </div>
-                        <div class="intereses">
-                            <i class="fa-solid fa-person-hiking"></i>
-                            <span>SENDERISMO</span>
-                        </div>
-                        <div class="intereses">
-                            <i class="fa-solid fa-person-biking"></i>
-                            <span>CICLISMO</span>
-                        </div>
-                        <div class="intereses">
-                            <i class="fa-solid fa-person-swimming"></i>
-                            <span>NATACION</span>
-                        </div>
+            <!--intereses-->
+            <div class="seccion-intereses">
+                <h3>Intereses</h3>
+                <div class="contenedor-intereses">
+                    <div class="intereses">
+                        <i class="fa-solid fa-microchip"></i>
+                        <span>TECNOLOGÍA</span>
                     </div>
+                    <div class="intereses">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>LIBROS</span>
+                        </div>
+                    <div class="intereses">
+                        <i class="fa-solid fa-motorcycle"></i>
+                        <span>MOTOCICLETAS</span>
+                    </div>
+                    <div class="intereses">
+                        <i class="fa-solid fa-plane"></i>
+                        <span>VIAJAR</span>
+                    </div>
+                    <div class="intereses">
+                        <i class="fa-solid fa-person-biking"></i>
+                        <span>CICLISMO</span>
+                    </div>
+                    <div class="intereses">
+                        <i class="fa-solid fa-person-hiking"></i>
+                        <span>SENDERISMO</span>
+                    </div>
+                    <div class="intereses">
+                        <i class="fa-solid fa-person-swimming"></i>
+                        <span>NATACIÓN</span>
+                    </div>
+                    <div class="intereses">
+                        <i class="fa-solid fa-camera"></i>
+                        <span>FOTOGRAFÍA</span>
+                    </div>    
                 </div>
             </div>
         </div>
     </section>
 
-    <!--SECCION HABILIDADES-->
-    <section class="skills" id="skills">
+    <!-- SECCION HABILIDADES -->
+    <section class="habilidades" id="habilidades">
         <div class="contenedor-seccion">
+
             <h2>HABILIDADES</h2>
-            <div class="fila">
-                <!--Habilidades Técnicas-->
-                <div class="col">
-                    <h3>Habilidades Técnicas</h3>
-                    <div class="skill">
-                        <span>QGIS</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>90%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>ARCGIS</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>80%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>POSTGRESQL - POSTGIS</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>75%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>GEOSERVER</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>75%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>LEAFLET</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>70%</span>
-                            </div>
-                        </div>
-                    </div>   
+
+            <!-- Contenedor de categorías técnicas -->
+            <div class="contenedor-habilidades">
+
+                <!-- GIS de escritorio -->
+                <div class="categoria-habilidad">
+                    <h3>GIS de Escritorio</h3>
+                    <p>QGIS · ArcGIS Pro</p>
                 </div>
-                <!--Habilidades Técnicas-->
-                <div class="col">
-                    <h3>Habilidades Profesionales</h3>
-                    <div class="skill">
-                        <span>Comunicación</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>80%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Trabajo en Equipo</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>95%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Manejo de Grupos</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>95%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Creatividad</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>85%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Compromiso</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>90%</span>
-                            </div>
-                        </div>
-                    </div>
+
+                <!-- Bases de datos espaciales -->
+                <div class="categoria-habilidad">
+                    <h3>Bases de Datos Espaciales</h3>
+                    <p>PostgreSQL · PostGIS</p>
                 </div>
+
+                <!-- GIS de campo -->
+                <div class="categoria-habilidad">
+                    <h3>GIS de Campo</h3>
+                    <p>QField · Mergin Maps · Survey123 · Field Maps</p>
+                </div>
+
+                <!-- Web GIS -->
+                <div class="categoria-habilidad">
+                    <h3>Web GIS</h3>
+                    <p>GeoServer · Leaflet · ArcGIS Online</p>
+                </div>
+
+                <!-- Automatización -->
+                <div class="categoria-habilidad">
+                    <h3>Automatización</h3>
+                    <p>Python · SQL · PyQGIS · ArcPy</p>
+                </div>
+
+                <!-- Infraestructura y despliegue -->
+                <div class="categoria-habilidad">
+                    <h3>Infraestructura y Despliegue</h3>
+                    <p>Linux · Docker</p>
+                </div>
+
             </div>
+
         </div>
     </section>
 
@@ -235,28 +163,21 @@
                 <div class="col izquierda">
                     <h3>Educación</h3>
                     <div class="item izq">
+                        <h4>Universidad Nacional Federico Villarreal (UNFV)</h4>
+                        <span class="logro">Egresado de Ingeniería Ambiental</span>
+                        <span class="fecha">2026</span>
+                    </div>
+
+                    <div class="item izq">
                         <h4>Centro de Altos Estudios en Geomática (CAEG)</h4>
                         <span class="logro">Experto en Administración, Configuración y Publicación de Servicios Web Mapping con Geoserver, Postgis y Leaflet</span>
                         <span class="fecha">2023</span>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
                     </div>
-                    <div class="item izq">
-                        <h4>Universidad Nacional Federico Villarreal (UNFV)</h4>
-                        <span class="logro">Bachiller de la Carrera Profesional de Ingeniería Ambiental</span>
-                        <span class="fecha">2022</span>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
-                    </div>
+                    
                     <div class="item izq">
                         <h4>Centro de Especialización Ambiental (CENESAM)</h4>
                         <span class="logro">Operador Técnico en Monitoreo Ambiental</span>
                         <span class="fecha">2014</span>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
                     </div>
                 </div>
 
@@ -264,28 +185,24 @@
                 <div class="col derecha">
                     <h3>Experiencia Profesional</h3>
                     <div class="item der">
-                        <h4>Coordinador GIS</h4>
-                        <span class="casa">Coorporación PIZE S.A.C.</span>
-                        <span class="fecha">16/03/2023 - 31/05/2024</span>
-                        <div class="conectord">
-                            <div class="circulod"></div>
-                        </div>
+                        <h4>Especialista CAD/GIS de Interferencias</h4>
+                        <span class="casa">Consorcio Soluciones Integrales Rímac S.A.C.</span>
+                        <span class="fecha">10/06/2024 - 31/05/2026</span>
                     </div>
                     <div class="item der">
-                        <h4>Coordinador Técnico de Campo Predial e Interferecias</h4>
+                        <h4>Coordinador GIS de Afectaciones Prediales e Interferencias</h4>
+                        <span class="casa">Corporación PIZE S.A.C.</span>
+                        <span class="fecha">16/03/2023 - 31/05/2024</span>
+                    </div>
+                    <div class="item der">
+                        <h4>Coordinador Técnico de Campo Predial e Interferencias</h4>
                         <span class="casa">Consultor Gino Pigato Rodríguez</span>
                         <span class="fecha">15/10/2022 - 28/02/2023</span>
-                        <div class="conectord">
-                            <div class="circulod"></div>
-                        </div>
                     </div>
                     <div class="item der">
-                        <h4>Coordinador Técnico de Campo Predial e Interferecias</h4>
+                        <h4>Coordinador Técnico de Campo Predial e Interferencias</h4>
                         <span class="casa">Consorcio Hidráulico del Norte</span>
                         <span class="fecha">15/09/2021 - 14/10/2022</span>
-                        <div class="conectord">
-                            <div class="circulod"></div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -340,37 +257,23 @@
             <h2>CONTACTO</h2>
             <div class="fila">
                 <!-- Formulario -->
-                <form class="col" action="https://formsubmit.co/awavila03@gmail.com" method="POST">
-                    <input type="name" placeholder="Tú Nombre">
-                    <input type="phone" placeholder="Número telefónico">
-                    <input type="email" placeholder="Dirección de correo">
-                    <input type="text" placeholder="Tema">
-                    <textarea name="mensaje" id="mensaje" cols="30" rows="10" placeholder="Mensaje"></textarea>
-                    <button>
-                        Enviar Mensaje <i class="fa-solid fa-paper-plane"></i>
-                        <span class="overlay"></span>
-                    </button>
-                </form>
-                <!-- Mapa -->
-                <div class="col">
-                    <img src="images/ubicacion.png" alt="">
-                    <div class="info">
-                        <ul>
-                            <li>
-                                <i class="fa-solid fa-location-dot"></i>
-                                Av. del Parque Nte. 1174, San Borja
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-mobile-screen"></i>
-                                Llamanos: +51 940 295 151
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-envelope"></i>
-                                Email: awavila03@gmail.com
-                            </li>
-                        </ul>
+                <form id="formulario-contacto" class="col" action="https://formsubmit.co/ajax/awavila03@gmail.com" method="POST">
+                    <input type="text" name="nombre" placeholder="Tu nombre" required>
+                    <input type="tel" name="telefono" placeholder="Número telefónico">
+                    <input type="email" name="correo" placeholder="Dirección de correo" required>
+                    <input type="text" name="asunto" placeholder="Tema" required>
+                    <textarea name="mensaje" id="mensaje" cols="30" rows="10" placeholder="Mensaje" required></textarea>
+
+                    <div class="acciones-formulario">
+                        <button type="submit">
+                            Enviar Mensaje <i class="fa-solid fa-paper-plane"></i>
+                            <span class="overlay"></span>
+                        </button>
+                    
+                        <!-- Mensaje de estado del formulario -->
+                        <p id="mensaje-formulario" class="mensaje-formulario"></p>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </section>
