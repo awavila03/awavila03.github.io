@@ -3,56 +3,89 @@
 
 let mostrandoTodos = false;
 let mapaDetalle = null;
+let tarjetaActiva = null;
 
-// Ordena por fecha, el más reciente primero
+// Detecta el mismo ancho de pantalla usado por el diseño responsive
+const vistaMovil = window.matchMedia('(max-width: 700px)');
+
+// Ordena los proyectos por su fecha de finalización
 const proyectosOrdenados = [...proyectos].sort(
-    (a, b) => new Date(b.fecha) - new Date(a.fecha)
+    (a, b) => b.fecha_final.localeCompare(a.fecha_final)
 );
 
 function renderGaleria() {
     const contenedor = document.querySelector('.portafolio .galeria');
     contenedor.innerHTML = '';
 
-    const cantidadAMostrar = mostrandoTodos ? proyectosOrdenados.length : 6;
+    // Muestra 3 proyectos en celulares y 6 en pantallas más grandes
+    const cantidadInicial = vistaMovil.matches ? 3 : 6;
+
+    const cantidadAMostrar = mostrandoTodos
+        ? proyectosOrdenados.length
+        : cantidadInicial;
+
     proyectosOrdenados.slice(0, cantidadAMostrar).forEach(p => {
         contenedor.innerHTML += `
-        <div class="proyecto" data-id="${p.id}">
-            <img src="${p.imagen}" alt="${p.titulo}">
-            <div class="overlay">
-            <h3>${p.titulo}</h3>
-            <p>${p.descripcionCorta}</p>
-            </div>
-        </div>`;
+            <button
+                type="button"
+                class="proyecto"
+                data-id="${p.id}"
+                aria-label="Ver detalles del proyecto ${p.titulo}"
+            >
+                <img src="${p.imagen}" alt="">
+                <div class="overlay">
+                    <h3>${p.titulo}</h3>
+                    <p>${p.descripcionCorta}</p>
+                </div>
+            </button>
+        `;
     });
 
-    // Vuelve a enganchar el click en cada tarjeta (se pierde al hacer innerHTML)
-    document.querySelectorAll('.portafolio .galeria .proyecto').forEach(card => {
-        card.addEventListener('click', () => abrirDetalle(card.dataset.id));
-    });
+    // Vuelve a enganchar el clic en cada tarjeta
+    document
+        .querySelectorAll('.portafolio .galeria .proyecto')
+        .forEach(card => {
+            card.addEventListener('click', () => {
+                abrirDetalle(card.dataset.id);
+            });
+        });
 
-    // Oculta el botón "ver más" si ya no quedan proyectos por mostrar
     const btnVerMas = document.getElementById('btn-ver-mas');
-    if (proyectosOrdenados.length <= 3) {
-        btnVerMas.style.display = 'none'; // si tienes 3 proyectos o menos, ni falta el botón
+
+    // Oculta el botón cuando todos los proyectos caben en la vista inicial
+    if (proyectosOrdenados.length <= cantidadInicial) {
+        btnVerMas.style.display = 'none';
     } else {
         btnVerMas.style.display = 'block';
-        btnVerMas.querySelector('.texto-boton').textContent = mostrandoTodos ? 'Ver menos' : 'Ver más proyectos';
+
+        btnVerMas.querySelector('.texto-boton').textContent =
+            mostrandoTodos ? 'Ver menos' : 'Ver más proyectos';
     }
 }
 
 function formatearFecha(fechaStr) {
-    const conDia = fechaStr.length === 7 ? fechaStr + '-01' : fechaStr;
-    const fecha = new Date(conDia);
-    return fecha.toLocaleDateString('es-PE', { month: 'long', year: 'numeric' });
+    // Separa el año y el mes para crear la fecha en horario local
+    const [anio, mes] = fechaStr.split('-').map(Number);
+    const fecha = new Date(anio, mes - 1, 1);
+
+    return fecha.toLocaleDateString('es-PE', {
+        month: 'long',
+        year: 'numeric'
+    });
 }
 
 function abrirDetalle(id) {
-    const p = proyectosOrdenados.find(x => x.id === id);
+    // Guarda la tarjeta para devolverle el foco al cerrar el modal
+    tarjetaActiva = document.activeElement;
+    const p = proyectosOrdenados.find(proyecto => proyecto.id === id);
+
     if (!p) return;
 
     document.getElementById('modal-titulo').textContent = p.titulo;
+
     document.getElementById('modal-fechas').textContent =
         `De ${formatearFecha(p.fecha_inicio)} a ${formatearFecha(p.fecha_final)}`;
+
     document.getElementById('modal-imagen').src = p.imagen;
     document.getElementById('modal-imagen').alt = p.titulo;
     document.getElementById('modal-categoria').textContent = p.categoria;
@@ -60,103 +93,167 @@ function abrirDetalle(id) {
     document.getElementById('modal-empresa').textContent = p.empresa || '—';
 
     const parrafos = p.descripcionLarga
-    .split('\n\n')
-    .map(parrafo => `<p>${parrafo}</p>`)
-    .join('');
-    const viñetas = (p.puntosClave && p.puntosClave.length)
-    ? '<ul>' + p.puntosClave.map(pt => `<li>${pt}</li>`).join('') + '</ul>'
-    : '';
-    document.getElementById('modal-descripcion').innerHTML = parrafos + viñetas;
+        .split('\n\n')
+        .map(parrafo => `<p>${parrafo}</p>`)
+        .join('');
 
-    document.getElementById('modal-proyecto').classList.remove('oculto');
+    const viñetas = p.puntosClave && p.puntosClave.length
+        ? '<ul>' +
+            p.puntosClave
+                .map(punto => `<li>${punto}</li>`)
+                .join('') +
+          '</ul>'
+        : '';
 
-    // Si ya había un mapa de un proyecto anterior, lo destruye antes de crear otro
+    document.getElementById('modal-descripcion').innerHTML =
+        parrafos + viñetas;
+
+    const modalProyecto = document.getElementById('modal-proyecto');
+
+    modalProyecto.classList.remove('oculto');
+    modalProyecto.setAttribute('aria-hidden', 'false');
+
+    // Lleva el foco al botón de cierre
+    modalProyecto.querySelector('.cerrar').focus();
+
+    // Destruye el mapa del proyecto anterior antes de crear uno nuevo
     if (mapaDetalle) {
         mapaDetalle.remove();
         mapaDetalle = null;
     }
 
-    mapaDetalle = L.map('mapa-detalle', { maxZoom: 18 }).setView(p.centro, p.zoom);
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    mapaDetalle = L.map('mapa-detalle', {
+        maxZoom: 18
+    }).setView(p.centro, p.zoom);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(mapaDetalle);
+    }).addTo(mapaDetalle);
 
-        const capas = p.capas || [];
+    const capas = p.capas || [];
 
-        // Intenta cargar todas las capas del proyecto; si alguna falla o no existe, se ignora sin romper las demás
-        const promesas = capas.map(capaInfo =>
+    // Carga todas las capas disponibles sin detener las demás si alguna falla
+    const promesas = capas.map(capaInfo =>
         fetch(capaInfo.archivo)
-            .then(r => r.json())
-            .then(data => ({ info: capaInfo, data }))
+            .then(respuesta => respuesta.json())
+            .then(datos => ({
+                info: capaInfo,
+                data: datos
+            }))
             .catch(() => null)
-        );
+    );
 
-        Promise.all(promesas).then(resultados => {
-        const overlays = {};
+    Promise.all(promesas).then(resultados => {
+        const capasSuperpuestas = {};
         const gruposValidos = [];
 
-        resultados.forEach(res => {
-            if (!res) return; // esta capa no existe todavía, se omite
+        resultados.forEach(resultado => {
+            // Omite las capas que no existan o no se puedan cargar
+            if (!resultado) return;
 
-            const capaLeaflet = L.geoJSON(res.data, {
-            style: () => ({ color: res.info.color || '#3388ff', weight: 3, fillOpacity: 0.25 }),
-            onEachFeature: (feature, layer) => {
-                const props = feature.properties || {};
-                let html = '';
-                if (props.tipo) html += `<strong>${props.tipo}</strong><br>`;
-                if (props.foto) html += `<img src="${props.foto}" style="max-width:180px;">`;
-                if (html) layer.bindPopup(html);
-            }
+            const capaLeaflet = L.geoJSON(resultado.data, {
+                style: () => ({
+                    color: resultado.info.color || '#3388ff',
+                    weight: 3,
+                    fillOpacity: 0.25
+                }),
+
+                onEachFeature: (feature, layer) => {
+                    const propiedades = feature.properties || {};
+                    let contenidoPopup = '';
+
+                    if (propiedades.tipo) {
+                        contenidoPopup +=
+                            `<strong>${propiedades.tipo}</strong><br>`;
+                    }
+
+                    if (propiedades.foto) {
+                        contenidoPopup +=
+                            `<img src="${propiedades.foto}" style="max-width:180px;">`;
+                    }
+
+                    if (contenidoPopup) {
+                        layer.bindPopup(contenidoPopup);
+                    }
+                }
             }).addTo(mapaDetalle);
 
-            overlays[res.info.nombre] = capaLeaflet;
+            capasSuperpuestas[resultado.info.nombre] = capaLeaflet;
             gruposValidos.push(capaLeaflet);
         });
 
-        // Ajusta el zoom para que se vean todas las capas cargadas juntas
+        // Ajusta el mapa para mostrar todas las capas cargadas
         if (gruposValidos.length > 0) {
             const grupoTotal = L.featureGroup(gruposValidos);
             mapaDetalle.fitBounds(grupoTotal.getBounds());
         }
 
-        // Solo muestra el selector de capas si hay más de una
-        if (Object.keys(overlays).length > 1) {
-            L.control.layers(null, overlays).addTo(mapaDetalle);
+        // Muestra el selector solamente cuando existe más de una capa
+        if (Object.keys(capasSuperpuestas).length > 1) {
+            L.control.layers(null, capasSuperpuestas).addTo(mapaDetalle);
         }
-        });
+    });
 
-    // Leaflet necesita esto porque el mapa se creó dentro de un modal
-    // que estaba oculto (display:none) hasta hace un instante
-    setTimeout(() => mapaDetalle.invalidateSize(), 100);
+    // Leaflet necesita recalcular el tamaño porque estaba dentro del modal oculto
+    setTimeout(() => {
+        mapaDetalle.invalidateSize();
+    }, 100);
 }
 
 function cerrarDetalle() {
-    document.getElementById('modal-proyecto').classList.add('oculto');
+    const modalProyecto = document.getElementById('modal-proyecto');
+
+    modalProyecto.classList.add('oculto');
+    modalProyecto.setAttribute('aria-hidden', 'true');
+
+    // Devuelve el foco a la tarjeta que abrió el modal
+    if (tarjetaActiva) {
+        tarjetaActiva.focus();
+        tarjetaActiva = null;
+    }
 }
 
-document.getElementById('btn-ver-mas').addEventListener('click', () => {
-    mostrandoTodos = !mostrandoTodos;
-    renderGaleria();
-    if (!mostrandoTodos) {
-        // Si acaba de colapsar a 3, regresa la vista al inicio de la sección
-        document.querySelector('.portafolio').scrollIntoView({ behavior: 'smooth' });
-    }
-});
+// Controla el botón "Ver más / Ver menos"
+document
+    .getElementById('btn-ver-mas')
+    .addEventListener('click', () => {
+        mostrandoTodos = !mostrandoTodos;
+        renderGaleria();
 
-// Cerrar el modal al hacer clic fuera de la tarjeta blanca (sobre el fondo oscuro)
-document.getElementById('modal-proyecto').addEventListener('click', (evento) => {
-    if (evento.target.id === 'modal-proyecto') {
-        cerrarDetalle();
-    }
-});
+        if (!mostrandoTodos) {
+            // Al volver a la vista inicial, regresa al comienzo de la sección
+            document.querySelector('.portafolio').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });
 
-// Cerrar el modal con la tecla Esc
-document.addEventListener('keydown', (evento) => {
-    const modalAbierto = !document.getElementById('modal-proyecto').classList.contains('oculto');
+// Cierra el modal al hacer clic sobre el fondo oscuro
+document
+    .getElementById('modal-proyecto')
+    .addEventListener('click', evento => {
+        if (evento.target.id === 'modal-proyecto') {
+            cerrarDetalle();
+        }
+    });
+
+// Cierra el modal con la tecla Esc
+document.addEventListener('keydown', evento => {
+    const modalAbierto = !document
+        .getElementById('modal-proyecto')
+        .classList.contains('oculto');
+
     if (evento.key === 'Escape' && modalAbierto) {
         cerrarDetalle();
     }
 });
 
-// Pinta la galería apenas el DOM esté listo
+// Actualiza la cantidad inicial al cambiar entre escritorio y celular
+vistaMovil.addEventListener('change', () => {
+    if (!mostrandoTodos) {
+        renderGaleria();
+    }
+});
+
+// Pinta la galería cuando el archivo termina de cargar
 renderGaleria();

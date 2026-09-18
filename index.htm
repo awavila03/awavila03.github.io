@@ -230,9 +230,11 @@
     </section>
 
     <!-- MODAL DE DETALLE DE PROYECTO -->
-    <div id="modal-proyecto" class="modal oculto">
+    <div id="modal-proyecto" class="modal oculto" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" aria-hidden="true">
         <div class="modal-contenido">
-            <button class="cerrar" onclick="cerrarDetalle()">&times;</button>
+            <button type="button" class="cerrar" onclick="cerrarDetalle()" aria-label="Cerrar detalles del proyecto">
+                &times;
+            </button>
             <div class="modal-info">
                 <h2 id="modal-titulo"></h2>
                 <p id="modal-fechas" class="modal-fechas"></p>
@@ -278,15 +280,34 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <a href="#inicio" class="arriba"><i class="fa-solid fa-angles-up"></i></a>
-        <div class="redes">
-            <a href="https://www.facebook.com/angel.avilaarauco.3/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://www.linkedin.com/in/angelavilaarauco03/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://www.instagram.com/angelwilliams03/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://gisconangel.blogspot.com/" target="_blank"><i class="fa-brands fa-blogger-b"></i></a>
-            <a href="https://github.com/awavila03" target="_blank"><i class="fa-brands fa-github"></i></a>
+    <!-- PIE DE PÁGINA -->
+    <footer class="pie-pagina">
+        <a
+            href="#inicio"
+            class="arriba"
+            aria-label="Volver al inicio"
+        >
+            <i class="fa-solid fa-angles-up"></i>
+        </a>
+
+        <div class="contenido-pie">
+            <a href="#inicio" class="marca-pie">
+                GEO<span>AVILA</span>
+            </a>
+
+            <p class="lema-pie">
+                GIS, datos espaciales y automatización aplicados a proyectos
+                de infraestructura.
+            </p>
+
+            <a href="mailto:awavila03@gmail.com" class="correo-pie">
+                awavila03@gmail.com
+            </a>
+
+            <p class="derechos-pie">
+                &copy; <span id="anio-actual"></span>
+                Angel Williams Avila Arauco
+            </p>
         </div>
     </footer>
 

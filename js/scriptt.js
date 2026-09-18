@@ -54,3 +54,10 @@ formularioContacto.addEventListener("submit", async function(evento) {
     mensajeFormulario.classList.remove("visible");
     }, 4000);
 });
+
+// Actualiza automáticamente el año del pie de página
+const anioActual = document.getElementById('anio-actual');
+
+if (anioActual) {
+    anioActual.textContent = new Date().getFullYear();
+}

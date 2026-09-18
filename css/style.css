@@ -480,40 +480,77 @@ body, html{
     flex-wrap: wrap;
     justify-content: space-around;
  }
- .portafolio .galeria .proyecto{
+
+/* Tarjeta de proyecto */
+.portafolio .galeria .proyecto {
     position: relative;
+    width: 100%;
     max-width: 340px;
     height: fit-content;
     margin: 10px;
+    padding: 0;
+    border: none;
+    overflow: hidden;
     cursor: pointer;
- }
- .portafolio .galeria .proyecto img{
+    appearance: none;
+    background-color: transparent;
+    color: #fff;
+    font: inherit;
+    text-align: left;
+}
+
+.portafolio .galeria .proyecto img {
     width: 100%;
     display: block;
- }
- .portafolio .galeria .proyecto .overlay{
+}
+
+/* Capa informativa de la tarjeta */
+.portafolio .galeria .proyecto .overlay {
     position: absolute;
-    top: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
+    padding: 15px;
+    color: #fff;
     text-align: center;
-    background: linear-gradient(rgba(28,182,152,.8), rgba(28,182,152,.8));
+    background: rgba(28, 182, 152, 0.8);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transition: 1s;
+    align-items: center;
     font-size: 18px;
     letter-spacing: 3px;
     opacity: 0;
- }
- .portafolio .galeria .proyecto .overlay a{
-    text-decoration: none;
-    color: #fff;
- }
- .portafolio .galeria .proyecto .overlay h3{
+    transition: opacity 0.4s ease;
+}
+
+.portafolio .galeria .proyecto .overlay h3 {
     margin-bottom: 20px;
-    transition: 1s;
- }
+    color: #fff;
+    transition: margin-bottom 0.4s ease;
+}
+
+.portafolio .galeria .proyecto .overlay p {
+    color: #fff;
+}
+
+/* Muestra la información con mouse o teclado */
+.portafolio .galeria .proyecto:hover .overlay,
+.portafolio .galeria .proyecto:focus-visible .overlay {
+    opacity: 1;
+}
+
+.portafolio .galeria .proyecto:hover .overlay h3,
+.portafolio .galeria .proyecto:focus-visible .overlay h3 {
+    margin-bottom: 0;
+}
+
+/* Resalta la tarjeta cuando se navega mediante el teclado */
+.portafolio .galeria .proyecto:focus-visible {
+    outline: 3px solid #1CB698;
+    outline-offset: 3px;
+}
+
  .portafolio .galeria .proyecto .overlay:hover{
     opacity: 1;
  }
@@ -632,7 +669,7 @@ body, html{
   .modal-mapa { width: 100%; height: 50%; order: 1; }
 }
 
-.portafolio button {
+.portafolio #btn-ver-mas {
   cursor: pointer;
   background-color: transparent;
   border: 2px solid #fff;
@@ -645,7 +682,7 @@ body, html{
   z-index: 10;
 }
 
-.portafolio button .overlay{
+.portafolio #btn-ver-mas .overlay{
    position: absolute;
    top: 0;
    left: 0;
@@ -655,8 +692,14 @@ body, html{
    z-index: -1;
    transition: 1s;
 }
-.portafolio button:hover .overlay{
+.portafolio #btn-ver-mas:hover .overlay{
    width: 100%;
+}
+
+/* Resalta la tarjeta cuando se navega mediante el teclado */
+.portafolio .galeria .proyecto:focus-visible {
+    outline: 3px solid #1CB698;
+    outline-offset: 3px;
 }
 
 
@@ -766,43 +809,85 @@ body, html{
 }
 
 
-/* FOOTER */
-footer{
-   background-color: #252A2E;
-   color: #fff;
-   padding: 50px 0 30px 0;
-   text-align: center;
-   position: relative;
-   width: 100%;
+/* PIE DE PÁGINA */
+.pie-pagina {
+    position: relative;
+    width: 100%;
+    padding: 60px 20px 30px;
+    color: #fff;
+    text-align: center;
+    background-color: #252A2E;
 }
 
-footer .redes a{
-   color: #fff;
-   display: inline-block;
-   text-decoration: none;
-   border: 1px solid #fff;
-   border-radius: 100%;
-   width: 42px;
-   height: 42px;
-   line-height: 42px;
-   margin: 40px 5px;
-   font-size: 20px;
-   transition: .3s;
+.pie-pagina .contenido-pie {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
 }
 
-footer .arriba{
-   display: block;
-   width: 50px;
-   height: 50px;
-   background-color: #1CB698;
-   color: #fff;
-   position: absolute;
-   left: 50%;
-   transform: translate(-50%);
-   top: -25px;
-   border-radius: 50%;
-   line-height: 50px;
-   font-size: 18px;
+/* Identidad profesional */
+.pie-pagina .marca-pie {
+    color: #fff;
+    font-family: 'Righteous';
+    font-size: 30px;
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+.pie-pagina .marca-pie span {
+    color: #1CB698;
+}
+
+.pie-pagina .lema-pie {
+    max-width: 620px;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.pie-pagina .correo-pie {
+    color: #1CB698;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.pie-pagina .correo-pie:hover {
+    color: #fff;
+}
+
+.pie-pagina .derechos-pie {
+    width: 100%;
+    margin-top: 12px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    color: #888;
+    font-size: 14px;
+}
+
+/* Botón para volver al inicio */
+.pie-pagina .arriba {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 50px;
+    text-decoration: none;
+    background-color: #1CB698;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    transition: transform 0.3s ease,
+                background-color 0.3s ease;
+}
+
+.pie-pagina .arriba:hover {
+    background-color: #15967d;
+    transform: translateX(-50%) translateY(-4px);
 }
 
 /* SECCION DE MAPA*/
@@ -814,7 +899,7 @@ footer .arriba{
     height: calc(100vh - 74px);
     width: 100%;
     z-index: 5;
-    margin-top: 74px;  
+    margin-top: 74px;
 }
 
 
@@ -858,6 +943,12 @@ footer .arriba{
     }
     .portafolio .galeria .proyecto{
         max-width: 100%;
+        padding: 0;
+        border: none;
+        background: none;
+        color: inherit;
+        font: inherit;
+        text-align: left;
     }
     .portafolio .galeria .proyecto img{
         width: 100%;
