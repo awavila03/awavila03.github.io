@@ -3,25 +3,39 @@
    ================================================== */
 
 :root {
-    /* Identidad */
+    color-scheme: dark;
+
+    /* Marca */
     --color-primary: #1CB698;
     --color-primary-dark: #148A73;
+    --color-on-primary: #071512;
 
-    /* Tema oscuro predeterminado */
+    /* Fondos y superficies */
     --color-background: #101817;
     --color-surface: #182320;
     --color-surface-alt: #202D29;
-    --color-text: #F2F6F5;
-    --color-text-muted: #A8B5B1;
-    --color-border: rgba(242, 246, 245, 0.12);
+
+    /* Texto y jerarquía */
+    --color-heading: var(--color-primary);
+    --color-text: #FFFFFF;
+    --color-text-muted: #B8BDC2;
+    --color-description: #FFFFFF;
+
+    /* Líneas y separadores */
+    --color-border: rgba(255, 255, 255, 0.12);
 
     /* Tipografía */
     --font-title: "Righteous", sans-serif;
     --font-body: "Work Sans", sans-serif;
 
-    /* Dimensiones */
+    /* Dimensiones generales */
     --content-width: 1200px;
     --header-height: 72px;
+
+    /* Formas */
+    --radius-small: 10px;
+    --radius-medium: 18px;
+    --radius-large: 28px;
 
     /* Efectos */
     --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.22);
@@ -31,17 +45,27 @@
 
 /* ==================================================
    TEMA CLARO
-   Se activará posteriormente con JavaScript
+   Se activará mediante JavaScript
    ================================================== */
 
 body.light-theme {
+    color-scheme: light;
+
+    /* Fondos y superficies */
     --color-background: #EDF2F0;
     --color-surface: #F8FAF9;
     --color-surface-alt: #E2EAE7;
-    --color-text: #17211F;
-    --color-text-muted: #5E6B67;
-    --color-border: rgba(23, 33, 31, 0.14);
 
+    /* Texto y jerarquía */
+    --color-heading: #0F745F;
+    --color-text: #1A1D1C;
+    --color-text-muted: #5F666B;
+    --color-description: #5F666B;
+
+    /* Líneas y separadores */
+    --color-border: rgba(26, 29, 28, 0.14);
+
+    /* Efectos */
     --shadow-soft: 0 12px 30px rgba(23, 33, 31, 0.10);
 }
 
@@ -272,4 +296,209 @@ button {
 .navigation-link:focus-visible {
     color: var(--color-primary);
     background-color: var(--color-surface-alt);
+}
+
+/* ==================================================
+   HERO — MOBILE FIRST
+   ================================================== */
+
+.hero {
+    position: relative;
+    display: grid;
+    min-height: calc(100vh - var(--header-height));
+    min-height: calc(100svh - var(--header-height));
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -8rem;
+    right: -10rem;
+    width: 22rem;
+    aspect-ratio: 1;
+    background-color: rgba(28, 182, 152, 0.12);
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    align-content: space-evenly;
+    gap: 1rem;
+    width: min(calc(100% - 2rem), var(--content-width));
+    min-height: calc(100vh - var(--header-height));
+    min-height: calc(100svh - var(--header-height));
+    padding-block: 1.25rem;
+    margin-inline: auto;
+}
+
+
+/* Contenido */
+
+.hero-content {
+    text-align: left;
+}
+
+.hero-eyebrow {
+    margin-bottom: 0.65rem;
+    color: var(--color-text);
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    max-width: 17ch;
+    color: var(--color-heading);
+    font-size: clamp(2rem, 8vw, 2.7rem);
+    line-height: 1.08;
+}
+
+.hero-statement {
+    max-width: 38rem;
+    margin-top: 1rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.hero-description {
+    max-width: 38rem;
+    margin-top: 0.8rem;
+    color: var(--color-description);
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+
+/* Botones */
+
+.hero-actions {
+    display: flex;
+    gap: 0.65rem;
+    width: 100%;
+    margin-top: 1.25rem;
+}
+
+.button {
+    display: inline-flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-height: 44px;
+    padding: 0.65rem 0.75rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    transition:
+        color var(--transition),
+        background-color var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
+}
+
+.button:active {
+    transform: scale(0.97);
+}
+
+.button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+.button-primary {
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
+}
+
+.button-primary:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.button-secondary {
+    color: var(--color-text);
+    background-color: transparent;
+    border-color: var(--color-border);
+}
+
+.button-secondary:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+
+/* Redes profesionales */
+
+.hero-socials {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.hero-socials a {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    color: var(--color-text);
+    background-color: transparent;
+    border: 1px solid var(--color-text-muted);
+    border-radius: 50%;
+    transition:
+        color var(--transition),
+        background-color var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
+}
+
+.hero-socials a:hover,
+.hero-socials a:focus-visible {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+
+/* Fotografía */
+
+.hero-visual {
+    width: min(55vw, 210px);
+    margin-inline: auto;
+}
+
+.hero-image-frame {
+    position: relative;
+    isolation: isolate;
+    aspect-ratio: 1;
+}
+
+.hero-image-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0.45rem -0.45rem -0.45rem 0.45rem;
+    z-index: -1;
+    border: 2px solid var(--color-primary);
+    border-radius: 28px;
+    opacity: 0.65;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 28px;
+    box-shadow: var(--shadow-soft);
 }

@@ -3,6 +3,65 @@
    ================================================== */
 
 @media (min-width: 768px) {
+
+    .hero-container {
+        grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+        grid-template-areas: "contenido fotografia";
+        align-items: center;
+        align-content: center;
+        gap: clamp(2.5rem, 6vw, 5rem);
+    }
+
+
+    /* Contenido */
+
+    .hero-content {
+        grid-area: contenido;
+    }
+
+    .hero-title {
+        max-width: 13ch;
+        font-size: clamp(3rem, 5vw, 4.5rem);
+    }
+
+    .hero-statement {
+        max-width: 42rem;
+        font-size: 1.2rem;
+    }
+
+    .hero-description {
+        max-width: 42rem;
+        font-size: 1.05rem;
+    }
+
+
+    /* Botones */
+
+    .hero-actions {
+        width: max-content;
+    }
+
+    .button {
+        flex: none;
+        min-width: 160px;
+        padding-inline: 1.25rem;
+    }
+
+
+    /* Redes profesionales */
+
+    .hero-socials {
+        justify-content: flex-start;
+    }
+
+
+    /* Fotografía */
+
+    .hero-visual {
+        grid-area: fotografia;
+        width: min(100%, 360px);
+        margin-inline: auto;
+    }
 }
 
 
@@ -70,7 +129,6 @@
         border-color: var(--color-primary);
     }
 }
-
 
 /* ==================================================
    PANTALLAS GRANDES

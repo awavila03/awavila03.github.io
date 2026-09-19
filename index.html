@@ -32,6 +32,15 @@
     <!-- JavaScript principal -->
     <script src="js/main.js" defer></script>
 
+    <!-- Iconos -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    >
+
 </head>
 
 <body>
@@ -96,7 +105,111 @@
     <main id="main-content">
 
         <!-- Portada -->
-        <section id="inicio" class="hero">
+        <section
+            class="hero"
+            id="inicio"
+            aria-labelledby="hero-title"
+        >
+            <div class="hero-container">
+
+                <!-- Fotografía profesional -->
+                <figure class="hero-visual">
+                    <div class="hero-image-frame">
+                        <img
+                            class="hero-image"
+                            src="images/foto-angel.jpg"
+                            alt="Angel Williams Avila Arauco, especialista GIS"
+                            fetchpriority="high"
+                        >
+                    </div>
+                </figure>
+
+                <!-- Mensaje principal -->
+                <div class="hero-content">
+                    <p class="hero-eyebrow">
+                        Especialista GIS en proyectos de infraestructura
+                    </p>
+
+                    <h1 class="hero-title" id="hero-title">
+                        Angel Williams Avila Arauco
+                    </h1>
+
+                    <p class="hero-statement">
+                        Diseño soluciones GIS para capturar, gestionar y transformar información geoespacial.
+                    </p>
+
+                    <p class="hero-description">
+                        Integro trabajo de campo, bases de datos espaciales,
+                        automatización y Web GIS para resolver necesidades reales
+                        en proyectos de infraestructura.
+                    </p>
+
+                    <!-- Acciones principales -->
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#projects">
+                            Ver proyectos
+                        </a>
+
+                        <a
+                            class="button button-secondary"
+                            href="documentos/CV Angel Avila 2026.pdf"
+                            download
+                        >
+                            Descargar CV
+                        </a>
+                    </div>
+
+                    <!-- Enlaces profesionales -->
+                    <ul class="hero-socials" aria-label="Redes profesionales">
+                        <li>
+                            <a
+                                href="https://www.linkedin.com/in/angelavilaarauco03/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="LinkedIn"
+                            >
+                                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                href="https://github.com/awavila03"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="GitHub"
+                            >
+                                <i class="fa-brands fa-github" aria-hidden="true"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                href="https://www.youtube.com/@geoavila03"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="YouTube"
+                            >
+                                <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                href="https://www.tiktok.com/@geoavila92"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="TikTok"
+                            >
+                                <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+            </div>
         </section>
 
         <!-- Presentación profesional -->
