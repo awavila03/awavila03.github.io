@@ -111,6 +111,11 @@
         font-size: 0.95rem;
         line-height: 1.4;
     }
+
+    /* Workflow — tableta y escritorio */
+    .descripcion-seccion {
+        max-width: none;
+    }
 }
 
 
