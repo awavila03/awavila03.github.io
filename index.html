@@ -27,12 +27,69 @@
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Estilos responsivos -->
-     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- JavaScript principal -->
+    <script src="js/main.js" defer></script>
+
 </head>
 
 <body>
     <!-- Encabezado y navegación principal -->
     <header class="site-header">
+        <div class="header-container">
+
+            <!-- Identidad -->
+            <a class="site-logo" href="#inicio" aria-label="Ir al inicio">
+                <span>GEO</span>AVILA
+            </a>
+
+            <!-- Acciones del encabezado -->
+            <div class="header-actions">
+
+                <!-- Cambio de tema -->
+                <button
+                    class="theme-toggle"
+                    id="theme-toggle"
+                    type="button"
+                    aria-label="Activar tema claro"
+                >
+                    <span class="theme-icon" aria-hidden="true">☀</span>
+                </button>
+
+                <!-- Menú móvil -->
+                <button
+                    class="menu-toggle"
+                    id="menu-toggle"
+                    type="button"
+                    aria-label="Abrir menú"
+                    aria-controls="main-navigation"
+                    aria-expanded="false"
+                >
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+
+            </div>
+
+            <!-- Navegación -->
+            <nav
+                class="main-navigation"
+                id="main-navigation"
+                aria-label="Navegación principal"
+            >
+                <ul class="navigation-list">
+                    <li><a class="navigation-link" href="#inicio">Inicio</a></li>
+                    <li><a class="navigation-link" href="#about">Sobre mí</a></li>
+                    <li><a class="navigation-link" href="#workflow">Enfoque</a></li>
+                    <li><a class="navigation-link" href="#projects">Proyectos</a></li>
+                    <li><a class="navigation-link" href="#experience">Experiencia</a></li>
+                    <li><a class="navigation-link" href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+
+        </div>
     </header>
 
     <!-- Contenido principal -->

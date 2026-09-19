@@ -11,6 +11,64 @@
    ================================================== */
 
 @media (min-width: 1024px) {
+
+    /* Encabezado */
+
+    .header-container {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 1.5rem;
+    }
+
+    .site-logo {
+        grid-column: 1;
+        font-size: 1.5rem;
+    }
+
+    .main-navigation {
+        position: static;
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: center;
+
+        width: auto;
+        padding: 0;
+        background-color: transparent;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: none;
+    }
+
+    .navigation-list {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    .navigation-link {
+        padding: 0.6rem 0.7rem;
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+
+    .header-actions {
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .theme-toggle:hover {
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
 }
 
 
