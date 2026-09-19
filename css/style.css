@@ -84,6 +84,7 @@ body.light-theme {
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
 }
 
 body {
@@ -306,7 +307,7 @@ button {
     position: relative;
     display: grid;
     min-height: calc(100vh - var(--header-height));
-    min-height: calc(100svh - var(--header-height));
+    min-height: calc(100dvh - var(--header-height));
     overflow: hidden;
 }
 
@@ -330,8 +331,7 @@ button {
     align-content: space-evenly;
     gap: 1rem;
     width: min(calc(100% - 2rem), var(--content-width));
-    min-height: calc(100vh - var(--header-height));
-    min-height: calc(100svh - var(--header-height));
+    min-height: inherit;
     padding-block: 1.25rem;
     margin-inline: auto;
 }
@@ -354,7 +354,7 @@ button {
 }
 
 .hero-title {
-    max-width: 17ch;
+    max-width: 13ch;
     color: var(--color-heading);
     font-size: clamp(2rem, 8vw, 2.7rem);
     line-height: 1.08;
@@ -501,4 +501,108 @@ button {
     border: 1px solid var(--color-border);
     border-radius: 28px;
     box-shadow: var(--shadow-soft);
+}
+
+
+/* ==================================================
+   SOBRE MÍ — MOBILE FIRST
+   ================================================== */
+
+.sobre-mi {
+    display: grid;
+    align-items: center;
+    min-height: calc(100vh - var(--header-height));
+    min-height: calc(100dvh - var(--header-height));
+    padding-block: 1.25rem;
+    background-color: var(--color-surface);
+}
+
+.contenedor-seccion {
+    width: min(calc(100% - 2rem), var(--content-width));
+    margin-inline: auto;
+}
+
+
+/* Encabezado reutilizable */
+
+.encabezado-seccion {
+    margin-bottom: 1.25rem;
+}
+
+.etiqueta-seccion {
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.titulo-seccion {
+    color: var(--color-heading);
+    font-size: clamp(1.75rem, 7vw, 2.25rem);
+    line-height: 1.15;
+}
+
+
+/* Contenido profesional */
+
+.sobre-mi-contenido {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.sobre-mi-texto {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.sobre-mi-texto p {
+    color: var(--color-text);
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+.sobre-mi-texto .sobre-mi-introduccion {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+
+/* Indicadores profesionales */
+
+.sobre-mi-indicadores {
+    display: grid;
+    gap: 0.5rem;
+    list-style: none;
+}
+
+.sobre-mi-indicador {
+    display: grid;
+    grid-template-columns: 76px 1fr;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 68px;
+    padding: 0.7rem 0.75rem;
+    background-color: var(--color-surface-alt);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-primary);
+    border-radius: var(--radius-small);
+}
+
+.sobre-mi-indicador strong {
+    color: var(--color-primary);
+    font-family: var(--font-title);
+    font-size: 1.7rem;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+}
+
+.sobre-mi-indicador span {
+    color: var(--color-text);
+    font-size: 0.88rem;
+    font-weight: 500;
+    line-height: 1.35;
 }

@@ -20,8 +20,8 @@
     }
 
     .hero-title {
-        max-width: 13ch;
-        font-size: clamp(3rem, 5vw, 4.5rem);
+        max-width: none;
+        font-size: clamp(2.25rem, 3vw, 2.8rem);
     }
 
     .hero-statement {
@@ -61,6 +61,55 @@
         grid-area: fotografia;
         width: min(100%, 360px);
         margin-inline: auto;
+    }
+
+
+    /* Sobre mí — tableta y escritorio */
+
+    .sobre-mi {
+        padding-block: clamp(3rem, 7vh, 5rem);
+    }
+
+    .encabezado-seccion {
+        margin-bottom: 1.75rem;
+    }
+
+    .sobre-mi-contenido {
+        gap: 2rem;
+    }
+
+    .sobre-mi-texto {
+        gap: 1rem;
+    }
+
+    .sobre-mi-texto p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .sobre-mi-texto .sobre-mi-introduccion {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    .sobre-mi-indicadores {
+        gap: 0.75rem;
+    }
+
+    .sobre-mi-indicador {
+        grid-template-columns: 88px 1fr;
+        gap: 1rem;
+        min-height: 82px;
+        padding: 1rem;
+    }
+
+    .sobre-mi-indicador strong {
+        font-size: 2rem;
+    }
+
+    .sobre-mi-indicador span {
+        font-size: 0.95rem;
+        line-height: 1.4;
     }
 }
 
