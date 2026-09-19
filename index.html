@@ -1,332 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Metadatos básicos -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio</title>
+
+    <!-- Información del sitio -->
+    <meta
+        name="description"
+        content="Portafolio profesional de Angel Williams Avila Arauco, especialista GIS en infraestructura, gestión de datos espaciales, automatización y Web GIS."
+    >
+    <meta name="author" content="Angel Williams Avila Arauco">
+
+    <title>GEOAVILA | Soluciones GIS</title>
     <link rel="icon" href="images/logo_geoavila.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/leaflet.css">
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Righteous&family=Work+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Estilos principales -->
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/leaflet.js" defer></script>
-    <script src="js/scriptt.js" defer></script>
-    <script src="js/proyectos-data.js" defer></script>
-    <script src="js/portafolio.js" defer></script>
 </head>
 
 <body>
-    <!--MENU ENCABEZADO-->
-    <header class="contenedor-header">
-        <div class="logo">
-            <a href="#">GEOAVILA</a>
-        </div>
-        <nav id="nav">
-            <ul>
-                <li><a href="#inicio" onclick="seleccionar()">INICIO</a></li>
-                <li><a href="#sobremi" onclick="seleccionar()">SOBRE MI</a></li>
-                <li><a href="#habilidades" onclick="seleccionar()">HABILIDADES</a></li>
-                <li><a href="#curriculum" onclick="seleccionar()">CURRICULUM</a></li>
-                <li><a href="#portafolio" onclick="seleccionar()">PORTAFOLIO</a></li>
-                <li><a href="#contacto" onclick="seleccionar()">CONTACTO</a></li>
-            </ul>
-        </nav>
-        <div class="nav-responsive" onclick="mostrarOcultarMenu()">
-            <i class="fa-solid fa-bars"></i>
-        </div>
+    <!-- Encabezado y navegación principal -->
+    <header class="site-header">
     </header>
 
-     <!--SECCION INICIO-->
-    <section id="inicio" class="inicio">
-        <div class="banner">
-            <img src="images/foto-angel.jpg" alt="foto de perfil de angel">
-            <h1>ANGEL WILLIAMS AVILA ARAUCO</h1>
-            <h2>Especialista GIS | Egresado de Ingeniería Ambiental</h2>
-            <div class="redes">
-                <a href="https://www.linkedin.com/in/angelavilaarauco03/" target="_blank">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-                <a href="https://github.com/awavila03" target="_blank">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="https://www.youtube.com/@geoavila03" target="_blank">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-                <a href="https://www.tiktok.com/@geoavila92?is_from_webapp=1&sender_device=pc" target="_blank">
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+    <!-- Contenido principal -->
+    <main id="main-content">
 
-    <!--SECCION SOBRE MI-->
-    <section id="sobremi" class="sobremi">
-        <div class="contenedor-seccion">
-            <h2>SOBRE MI</h2>
-            <p>Hola, soy <span>Angel Avila Arauco.</span> Especialista GIS con más de 5 años de experiencia en proyectos de infraestructura, con experiencia principalmente en gestión predial e interferencias. He liderado equipos y diseñado flujos para captura, análisis, control de calidad y gestión de datos espaciales con QGIS, PostgreSQL/PostGIS, QField, Mergin Maps y GeoServer, además de trabajar con el ecosistema Esri mediante ArcGIS Pro, ArcGIS Online, Survey123 y Field Maps. Mi fortaleza está en entender la lógica de cada proyecto y adaptar el GIS a sus necesidades, combinando datos, automatización y herramientas geoespaciales para mejorar procesos y apoyar la toma de decisiones.</p>
+        <!-- Portada -->
+        <section id="inicio" class="hero">
+        </section>
 
-            <!--intereses-->
-            <div class="seccion-intereses">
-                <h3>Intereses</h3>
-                <div class="contenedor-intereses">
-                    <div class="intereses">
-                        <i class="fa-solid fa-microchip"></i>
-                        <span>TECNOLOGÍA</span>
-                    </div>
-                    <div class="intereses">
-                        <i class="fa-solid fa-book-open"></i>
-                        <span>LIBROS</span>
-                        </div>
-                    <div class="intereses">
-                        <i class="fa-solid fa-motorcycle"></i>
-                        <span>MOTOCICLETAS</span>
-                    </div>
-                    <div class="intereses">
-                        <i class="fa-solid fa-plane"></i>
-                        <span>VIAJAR</span>
-                    </div>
-                    <div class="intereses">
-                        <i class="fa-solid fa-person-biking"></i>
-                        <span>CICLISMO</span>
-                    </div>
-                    <div class="intereses">
-                        <i class="fa-solid fa-person-hiking"></i>
-                        <span>SENDERISMO</span>
-                    </div>
-                    <div class="intereses">
-                        <i class="fa-solid fa-person-swimming"></i>
-                        <span>NATACIÓN</span>
-                    </div>
-                    <div class="intereses">
-                        <i class="fa-solid fa-camera"></i>
-                        <span>FOTOGRAFÍA</span>
-                    </div>    
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Presentación profesional -->
+        <section id="about" class="about-section">
+        </section>
 
-    <!-- SECCION HABILIDADES -->
-    <section class="habilidades" id="habilidades">
-        <div class="contenedor-seccion">
+        <!-- Flujo de trabajo GIS -->
+        <section id="workflow" class="workflow-section">
+        </section>
 
-            <h2>HABILIDADES</h2>
+        <!-- Proyectos seleccionados -->
+        <section id="projects" class="projects-section">
+        </section>
 
-            <!-- Contenedor de categorías técnicas -->
-            <div class="contenedor-habilidades">
+        <!-- Capacidades profesionales -->
+        <section id="capabilities" class="capabilities-section">
+        </section>
 
-                <!-- GIS de escritorio -->
-                <div class="categoria-habilidad">
-                    <h3>GIS de Escritorio</h3>
-                    <p>QGIS · ArcGIS Pro</p>
-                </div>
+        <!-- Trayectoria profesional -->
+        <section id="experience" class="experience-section">
+        </section>
 
-                <!-- Bases de datos espaciales -->
-                <div class="categoria-habilidad">
-                    <h3>Bases de Datos Espaciales</h3>
-                    <p>PostgreSQL · PostGIS</p>
-                </div>
+        <!-- Formulario y medios de contacto -->
+        <section id="contact" class="contact-section">
+        </section>
 
-                <!-- GIS de campo -->
-                <div class="categoria-habilidad">
-                    <h3>GIS de Campo</h3>
-                    <p>QField · Mergin Maps · Survey123 · Field Maps</p>
-                </div>
+    </main>
 
-                <!-- Web GIS -->
-                <div class="categoria-habilidad">
-                    <h3>Web GIS</h3>
-                    <p>GeoServer · Leaflet · ArcGIS Online</p>
-                </div>
-
-                <!-- Automatización -->
-                <div class="categoria-habilidad">
-                    <h3>Automatización</h3>
-                    <p>Python · SQL · PyQGIS · ArcPy</p>
-                </div>
-
-                <!-- Infraestructura y despliegue -->
-                <div class="categoria-habilidad">
-                    <h3>Infraestructura y Despliegue</h3>
-                    <p>Linux · Docker</p>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-    <!--SECCION CURRICULUM-->
-    <section id="curriculum" class="curriculum">
-        <div class="contenedor-seccion">
-            <h2>CURRICULUM</h2>
-            <div class="fila">
-                <div class="col izquierda">
-                    <h3>Educación</h3>
-                    <div class="item izq">
-                        <h4>Universidad Nacional Federico Villarreal (UNFV)</h4>
-                        <span class="logro">Egresado de Ingeniería Ambiental</span>
-                        <span class="fecha">2026</span>
-                    </div>
-
-                    <div class="item izq">
-                        <h4>Centro de Altos Estudios en Geomática (CAEG)</h4>
-                        <span class="logro">Experto en Administración, Configuración y Publicación de Servicios Web Mapping con Geoserver, Postgis y Leaflet</span>
-                        <span class="fecha">2023</span>
-                    </div>
-                    
-                    <div class="item izq">
-                        <h4>Centro de Especialización Ambiental (CENESAM)</h4>
-                        <span class="logro">Operador Técnico en Monitoreo Ambiental</span>
-                        <span class="fecha">2014</span>
-                    </div>
-                </div>
-
-
-                <div class="col derecha">
-                    <h3>Experiencia Profesional</h3>
-                    <div class="item der">
-                        <h4>Especialista CAD/GIS de Interferencias</h4>
-                        <span class="casa">Consorcio Soluciones Integrales Rímac S.A.C.</span>
-                        <span class="fecha">10/06/2024 - 31/05/2026</span>
-                    </div>
-                    <div class="item der">
-                        <h4>Coordinador GIS de Afectaciones Prediales e Interferencias</h4>
-                        <span class="casa">Corporación PIZE S.A.C.</span>
-                        <span class="fecha">16/03/2023 - 31/05/2024</span>
-                    </div>
-                    <div class="item der">
-                        <h4>Coordinador Técnico de Campo Predial e Interferencias</h4>
-                        <span class="casa">Consultor Gino Pigato Rodríguez</span>
-                        <span class="fecha">15/10/2022 - 28/02/2023</span>
-                    </div>
-                    <div class="item der">
-                        <h4>Coordinador Técnico de Campo Predial e Interferencias</h4>
-                        <span class="casa">Consorcio Hidráulico del Norte</span>
-                        <span class="fecha">15/09/2021 - 14/10/2022</span>
-                    </div>
-                </div>
-            </div>
-            <a href="documentos/CV Angel Avila 2026.pdf" target="_blank">
-                <button>
-                    Descargar CV <i class="fa-solid fa-download"></i>
-                    <span class="overlay"></span>
-                </button>
-            </a>
-        </div>
-    </section>
-
-    <!--SECCION PORTAFOLIO-->
-    <section id="portafolio" class="portafolio">
-        <div class="contenedor-seccion">
-            <h2>PORTAFOLIO</h2>
-            <div class="galeria">
-                <!-- Las tarjetas se generan solas desde js/portafolio.js -->
-            </div>
-            <button id="btn-ver-mas">
-                <span class="texto-boton">Ver más proyectos</span>
-                <span class="overlay"></span>
-            </button>
-        </div>
-    </section>
-
-    <!-- MODAL DE DETALLE DE PROYECTO -->
-    <div id="modal-proyecto" class="modal oculto">
-        <div class="modal-contenido">
-            <button class="cerrar" onclick="cerrarDetalle()">
-                &times;
-            </button>
-
-            <div class="modal-info">
-                <h2 id="modal-titulo"></h2>
-                <p id="modal-fechas" class="modal-fechas"></p>
-
-                <img id="modal-imagen" class="modal-imagen" src="" alt="">
-
-                <p class="dato">
-                    <span class="etiqueta">Tipo de Proyecto:</span>
-                    <span id="modal-categoria"></span>
-                </p>
-
-                <p class="dato">
-                    <span class="etiqueta">Titular:</span>
-                    <span id="modal-cliente"></span>
-                </p>
-
-                <p class="dato">
-                    <span class="etiqueta">Empresa:</span>
-                    <span id="modal-empresa"></span>
-                </p>
-
-                <p class="etiqueta titulo-descripcion">
-                    Descripción:
-                </p>
-
-                <div id="modal-descripcion"></div>
-            </div>
-
-            <div class="modal-mapa">
-                <div id="mapa-detalle"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SECCION CONTACTO -->
-    <section id="contacto" class="contacto">
-        <div class="contenedor-seccion">
-            <h2>CONTACTO</h2>
-            <div class="fila">
-                <!-- Formulario -->
-                <form id="formulario-contacto" class="col" action="https://formsubmit.co/ajax/awavila03@gmail.com" method="POST">
-                    <input type="text" name="nombre" placeholder="Tu nombre" required>
-                    <input type="tel" name="telefono" placeholder="Número telefónico">
-                    <input type="email" name="correo" placeholder="Dirección de correo" required>
-                    <input type="text" name="asunto" placeholder="Tema" required>
-                    <textarea name="mensaje" id="mensaje" cols="30" rows="10" placeholder="Mensaje" required></textarea>
-
-                    <div class="acciones-formulario">
-                        <button type="submit">
-                            Enviar Mensaje <i class="fa-solid fa-paper-plane"></i>
-                            <span class="overlay"></span>
-                        </button>
-                    
-                        <!-- Mensaje de estado del formulario -->
-                        <p id="mensaje-formulario" class="mensaje-formulario"></p>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- PIE DE PÁGINA -->
-    <footer class="pie-pagina">
-        <a
-            href="#inicio"
-            class="arriba"
-            aria-label="Volver al inicio"
-        >
-            <i class="fa-solid fa-angles-up"></i>
-        </a>
-
-        <div class="contenido-pie">
-            <a href="#inicio" class="marca-pie">
-                GEO<span>AVILA</span>
-            </a>
-
-            <p class="lema-pie">
-                GIS, datos espaciales y automatización aplicados a proyectos
-                de infraestructura.
-            </p>
-
-            <a href="mailto:awavila03@gmail.com" class="correo-pie">
-                awavila03@gmail.com
-            </a>
-
-            <p class="derechos-pie">
-                &copy; <span id="anio-actual"></span>
-                Angel Williams Avila Arauco
-            </p>
-        </div>
+    <!-- Pie de página -->
+    <footer class="site-footer">
     </footer>
-
 </body>
+
 </html>
