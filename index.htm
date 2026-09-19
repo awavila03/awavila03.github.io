@@ -230,23 +230,45 @@
     </section>
 
     <!-- MODAL DE DETALLE DE PROYECTO -->
-    <div id="modal-proyecto" class="modal oculto" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" aria-hidden="true">
+    <div id="modal-proyecto" class="modal oculto">
         <div class="modal-contenido">
-            <button type="button" class="cerrar" onclick="cerrarDetalle()" aria-label="Cerrar detalles del proyecto">
+            <button class="cerrar" onclick="cerrarDetalle()">
                 &times;
             </button>
+
             <div class="modal-info">
                 <h2 id="modal-titulo"></h2>
                 <p id="modal-fechas" class="modal-fechas"></p>
-                <img id="modal-imagen" class="modal-imagen" src="" alt="">
 
-                <p class="dato"><span class="etiqueta">Tipo de Proyecto:</span> <span id="modal-categoria"></span></p>
-                <p class="dato"><span class="etiqueta">Titular:</span> <span id="modal-cliente"></span></p>
-                <p class="dato"><span class="etiqueta">Empresa:</span> <span id="modal-empresa"></span></p>
+                <img
+                    id="modal-imagen"
+                    class="modal-imagen"
+                    src=""
+                    alt=""
+                >
 
-                <p class="etiqueta titulo-descripcion">Descripción:</p>
+                <p class="dato">
+                    <span class="etiqueta">Tipo de Proyecto:</span>
+                    <span id="modal-categoria"></span>
+                </p>
+
+                <p class="dato">
+                    <span class="etiqueta">Titular:</span>
+                    <span id="modal-cliente"></span>
+                </p>
+
+                <p class="dato">
+                    <span class="etiqueta">Empresa:</span>
+                    <span id="modal-empresa"></span>
+                </p>
+
+                <p class="etiqueta titulo-descripcion">
+                    Descripción:
+                </p>
+
                 <div id="modal-descripcion"></div>
             </div>
+
             <div class="modal-mapa">
                 <div id="mapa-detalle"></div>
             </div>

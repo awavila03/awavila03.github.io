@@ -1,20 +1,25 @@
 // js/portafolio.js
-// Pinta la galería de proyectos, maneja "ver más" y el modal de detalle.
+// Genera la galería, controla "Ver más" y muestra el detalle de cada proyecto.
 
 let mostrandoTodos = false;
 let mapaDetalle = null;
-let tarjetaActiva = null;
 
-// Detecta el mismo ancho de pantalla usado por el diseño responsive
+// Detecta el mismo ancho utilizado por el diseño responsive del CSS
 const vistaMovil = window.matchMedia('(max-width: 700px)');
 
-// Ordena los proyectos por su fecha de finalización
+// Ordena los proyectos por su fecha final, del más reciente al más antiguo
 const proyectosOrdenados = [...proyectos].sort(
     (a, b) => b.fecha_final.localeCompare(a.fecha_final)
 );
 
+
+/* GENERACIÓN DE LA GALERÍA */
+
 function renderGaleria() {
-    const contenedor = document.querySelector('.portafolio .galeria');
+    const contenedor = document.querySelector(
+        '.portafolio .galeria'
+    );
+
     contenedor.innerHTML = '';
 
     // Muestra 3 proyectos en celulares y 6 en pantallas más grandes
@@ -24,47 +29,69 @@ function renderGaleria() {
         ? proyectosOrdenados.length
         : cantidadInicial;
 
-    proyectosOrdenados.slice(0, cantidadAMostrar).forEach(p => {
-        contenedor.innerHTML += `
-            <button
-                type="button"
-                class="proyecto"
-                data-id="${p.id}"
-                aria-label="Ver detalles del proyecto ${p.titulo}"
-            >
-                <img src="${p.imagen}" alt="">
-                <div class="overlay">
-                    <h3>${p.titulo}</h3>
-                    <p>${p.descripcionCorta}</p>
-                </div>
-            </button>
-        `;
-    });
+    proyectosOrdenados
+        .slice(0, cantidadAMostrar)
+        .forEach(proyecto => {
+            contenedor.innerHTML += `
+                <div
+                    class="proyecto"
+                    data-id="${proyecto.id}"
+                >
+                    <img
+                        src="${proyecto.imagen}"
+                        alt="${proyecto.titulo}"
+                    >
 
-    // Vuelve a enganchar el clic en cada tarjeta
+                    <div class="overlay">
+                        <h3>${proyecto.titulo}</h3>
+                        <p>${proyecto.descripcionCorta}</p>
+
+                        <span class="indicador-detalle">
+                            Ver detalles
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </div>
+                </div>
+            `;
+        });
+
+    // Asigna el evento de apertura a cada tarjeta
     document
         .querySelectorAll('.portafolio .galeria .proyecto')
-        .forEach(card => {
-            card.addEventListener('click', () => {
-                abrirDetalle(card.dataset.id);
+        .forEach(tarjeta => {
+            tarjeta.addEventListener('click', () => {
+                abrirDetalle(tarjeta.dataset.id);
             });
         });
 
-    const btnVerMas = document.getElementById('btn-ver-mas');
-
-    // Oculta el botón cuando todos los proyectos caben en la vista inicial
-    if (proyectosOrdenados.length <= cantidadInicial) {
-        btnVerMas.style.display = 'none';
-    } else {
-        btnVerMas.style.display = 'block';
-
-        btnVerMas.querySelector('.texto-boton').textContent =
-            mostrandoTodos ? 'Ver menos' : 'Ver más proyectos';
-    }
+    actualizarBotonGaleria(cantidadInicial);
 }
 
+
+/* BOTÓN VER MÁS / VER MENOS */
+
+function actualizarBotonGaleria(cantidadInicial) {
+    const btnVerMas = document.getElementById('btn-ver-mas');
+
+    // Oculta el botón cuando todos los proyectos caben inicialmente
+    if (proyectosOrdenados.length <= cantidadInicial) {
+        btnVerMas.style.display = 'none';
+        return;
+    }
+
+    btnVerMas.style.display = 'block';
+
+    btnVerMas.querySelector('.texto-boton').textContent =
+        mostrandoTodos
+            ? 'Ver menos'
+            : 'Ver más proyectos';
+}
+
+
+/* FORMATO DE FECHAS */
+
 function formatearFecha(fechaStr) {
-    // Separa el año y el mes para crear la fecha en horario local
+    // Separa año y mes para evitar diferencias por zona horaria
     const [anio, mes] = fechaStr.split('-').map(Number);
     const fecha = new Date(anio, mes - 1, 1);
 
@@ -74,49 +101,89 @@ function formatearFecha(fechaStr) {
     });
 }
 
+
+/* APERTURA DEL DETALLE */
+
 function abrirDetalle(id) {
-    // Guarda la tarjeta para devolverle el foco al cerrar el modal
-    tarjetaActiva = document.activeElement;
-    const p = proyectosOrdenados.find(proyecto => proyecto.id === id);
+    const proyecto = proyectosOrdenados.find(
+        elemento => elemento.id === id
+    );
 
-    if (!p) return;
+    if (!proyecto) return;
 
-    document.getElementById('modal-titulo').textContent = p.titulo;
+    completarInformacionModal(proyecto);
+    mostrarModal();
+    crearMapaProyecto(proyecto);
+}
+
+
+/* INFORMACIÓN DEL MODAL */
+
+function completarInformacionModal(proyecto) {
+    document.getElementById('modal-titulo').textContent =
+        proyecto.titulo;
 
     document.getElementById('modal-fechas').textContent =
-        `De ${formatearFecha(p.fecha_inicio)} a ${formatearFecha(p.fecha_final)}`;
+        `De ${formatearFecha(proyecto.fecha_inicio)} ` +
+        `a ${formatearFecha(proyecto.fecha_final)}`;
 
-    document.getElementById('modal-imagen').src = p.imagen;
-    document.getElementById('modal-imagen').alt = p.titulo;
-    document.getElementById('modal-categoria').textContent = p.categoria;
-    document.getElementById('modal-cliente').textContent = p.cliente || '—';
-    document.getElementById('modal-empresa').textContent = p.empresa || '—';
+    const imagenModal = document.getElementById('modal-imagen');
 
-    const parrafos = p.descripcionLarga
+    imagenModal.src = proyecto.imagen;
+    imagenModal.alt = proyecto.titulo;
+
+    document.getElementById('modal-categoria').textContent =
+        proyecto.categoria;
+
+    document.getElementById('modal-cliente').textContent =
+        proyecto.cliente || '—';
+
+    document.getElementById('modal-empresa').textContent =
+        proyecto.empresa || '—';
+
+    const parrafos = proyecto.descripcionLarga
         .split('\n\n')
         .map(parrafo => `<p>${parrafo}</p>`)
         .join('');
 
-    const viñetas = p.puntosClave && p.puntosClave.length
-        ? '<ul>' +
-            p.puntosClave
-                .map(punto => `<li>${punto}</li>`)
-                .join('') +
-          '</ul>'
+    const listaPuntos = proyecto.puntosClave?.length
+        ? `
+            <ul>
+                ${proyecto.puntosClave
+                    .map(punto => `<li>${punto}</li>`)
+                    .join('')}
+            </ul>
+        `
         : '';
 
     document.getElementById('modal-descripcion').innerHTML =
-        parrafos + viñetas;
+        parrafos + listaPuntos;
+}
 
+
+/* CONTROL DEL MODAL */
+
+function mostrarModal() {
     const modalProyecto = document.getElementById('modal-proyecto');
+    const informacionModal = modalProyecto.querySelector('.modal-info');
 
     modalProyecto.classList.remove('oculto');
-    modalProyecto.setAttribute('aria-hidden', 'false');
 
-    // Lleva el foco al botón de cierre
-    modalProyecto.querySelector('.cerrar').focus();
+    // Reinicia la descripción en la parte superior
+    informacionModal.scrollTop = 0;
+}
 
-    // Destruye el mapa del proyecto anterior antes de crear uno nuevo
+function cerrarDetalle() {
+    document
+        .getElementById('modal-proyecto')
+        .classList.add('oculto');
+}
+
+
+/* MAPA DEL PROYECTO */
+
+function crearMapaProyecto(proyecto) {
+    // Elimina el mapa anterior antes de crear uno nuevo
     if (mapaDetalle) {
         mapaDetalle.remove();
         mapaDetalle = null;
@@ -124,15 +191,32 @@ function abrirDetalle(id) {
 
     mapaDetalle = L.map('mapa-detalle', {
         maxZoom: 18
-    }).setView(p.centro, p.zoom);
+    }).setView(
+        proyecto.centro,
+        proyecto.zoom
+    );
 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(mapaDetalle);
+    L.tileLayer(
+        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+            attribution: '&copy; OpenStreetMap contributors'
+        }
+    ).addTo(mapaDetalle);
 
-    const capas = p.capas || [];
+    cargarCapasProyecto(proyecto);
 
-    // Carga todas las capas disponibles sin detener las demás si alguna falla
+    // Leaflet recalcula el tamaño porque el mapa estaba oculto
+    setTimeout(() => {
+        mapaDetalle.invalidateSize();
+    }, 100);
+}
+
+
+/* CARGA DE CAPAS GEOJSON */
+
+function cargarCapasProyecto(proyecto) {
+    const capas = proyecto.capas || [];
+
     const promesas = capas.map(capaInfo =>
         fetch(capaInfo.archivo)
             .then(respuesta => respuesta.json())
@@ -148,85 +232,119 @@ function abrirDetalle(id) {
         const gruposValidos = [];
 
         resultados.forEach(resultado => {
-            // Omite las capas que no existan o no se puedan cargar
+            // Omite las capas inexistentes o que no pudieron cargarse
             if (!resultado) return;
 
-            const capaLeaflet = L.geoJSON(resultado.data, {
-                style: () => ({
-                    color: resultado.info.color || '#3388ff',
-                    weight: 3,
-                    fillOpacity: 0.25
-                }),
+            const capaLeaflet = L.geoJSON(
+                resultado.data,
+                {
+                    style: () => ({
+                        color:
+                            resultado.info.color ||
+                            '#3388ff',
+                        weight: 3,
+                        fillOpacity: 0.25
+                    }),
 
-                onEachFeature: (feature, layer) => {
-                    const propiedades = feature.properties || {};
-                    let contenidoPopup = '';
-
-                    if (propiedades.tipo) {
-                        contenidoPopup +=
-                            `<strong>${propiedades.tipo}</strong><br>`;
-                    }
-
-                    if (propiedades.foto) {
-                        contenidoPopup +=
-                            `<img src="${propiedades.foto}" style="max-width:180px;">`;
-                    }
-
-                    if (contenidoPopup) {
-                        layer.bindPopup(contenidoPopup);
+                    onEachFeature: (feature, layer) => {
+                        agregarPopup(
+                            feature,
+                            layer
+                        );
                     }
                 }
-            }).addTo(mapaDetalle);
+            ).addTo(mapaDetalle);
 
-            capasSuperpuestas[resultado.info.nombre] = capaLeaflet;
+            capasSuperpuestas[
+                resultado.info.nombre
+            ] = capaLeaflet;
+
             gruposValidos.push(capaLeaflet);
         });
 
-        // Ajusta el mapa para mostrar todas las capas cargadas
-        if (gruposValidos.length > 0) {
-            const grupoTotal = L.featureGroup(gruposValidos);
-            mapaDetalle.fitBounds(grupoTotal.getBounds());
-        }
-
-        // Muestra el selector solamente cuando existe más de una capa
-        if (Object.keys(capasSuperpuestas).length > 1) {
-            L.control.layers(null, capasSuperpuestas).addTo(mapaDetalle);
-        }
+        ajustarExtensionMapa(gruposValidos);
+        agregarControlCapas(capasSuperpuestas);
     });
-
-    // Leaflet necesita recalcular el tamaño porque estaba dentro del modal oculto
-    setTimeout(() => {
-        mapaDetalle.invalidateSize();
-    }, 100);
 }
 
-function cerrarDetalle() {
-    const modalProyecto = document.getElementById('modal-proyecto');
 
-    modalProyecto.classList.add('oculto');
-    modalProyecto.setAttribute('aria-hidden', 'true');
+/* CONTENIDO DE LOS POPUPS */
 
-    // Devuelve el foco a la tarjeta que abrió el modal
-    if (tarjetaActiva) {
-        tarjetaActiva.focus();
-        tarjetaActiva = null;
+function agregarPopup(feature, layer) {
+    const propiedades = feature.properties || {};
+    let contenidoPopup = '';
+
+    if (propiedades.tipo) {
+        contenidoPopup += `
+            <strong>${propiedades.tipo}</strong>
+            <br>
+        `;
+    }
+
+    if (propiedades.foto) {
+        contenidoPopup += `
+            <img
+                src="${propiedades.foto}"
+                style="max-width: 180px;"
+            >
+        `;
+    }
+
+    if (contenidoPopup) {
+        layer.bindPopup(contenidoPopup);
     }
 }
 
-// Controla el botón "Ver más / Ver menos"
+
+/* AJUSTE DEL MAPA */
+
+function ajustarExtensionMapa(gruposValidos) {
+    if (gruposValidos.length === 0) return;
+
+    const grupoTotal = L.featureGroup(gruposValidos);
+
+    mapaDetalle.fitBounds(
+        grupoTotal.getBounds()
+    );
+}
+
+
+/* SELECTOR DE CAPAS */
+
+function agregarControlCapas(capasSuperpuestas) {
+    const cantidadCapas = Object.keys(
+        capasSuperpuestas
+    ).length;
+
+    // Muestra el selector solamente cuando existe más de una capa
+    if (cantidadCapas > 1) {
+        L.control.layers(
+            null,
+            capasSuperpuestas
+        ).addTo(mapaDetalle);
+    }
+}
+
+
+/* EVENTOS */
+
+// Expande o contrae la galería
 document
     .getElementById('btn-ver-mas')
     .addEventListener('click', () => {
         mostrandoTodos = !mostrandoTodos;
+
         renderGaleria();
 
         if (!mostrandoTodos) {
-            // Al volver a la vista inicial, regresa al comienzo de la sección
-            document.querySelector('.portafolio').scrollIntoView({
-                behavior: 'smooth'
-            });
+            document
+                .querySelector('.portafolio')
+                .scrollIntoView({
+                    behavior: 'smooth'
+                });
         }
     });
+
 
 // Cierra el modal al hacer clic sobre el fondo oscuro
 document
@@ -237,23 +355,31 @@ document
         }
     });
 
-// Cierra el modal con la tecla Esc
+
+// Cierra el modal mediante la tecla Escape
 document.addEventListener('keydown', evento => {
     const modalAbierto = !document
         .getElementById('modal-proyecto')
         .classList.contains('oculto');
 
-    if (evento.key === 'Escape' && modalAbierto) {
+    if (
+        evento.key === 'Escape' &&
+        modalAbierto
+    ) {
         cerrarDetalle();
     }
 });
 
-// Actualiza la cantidad inicial al cambiar entre escritorio y celular
+
+// Actualiza la galería al cambiar entre escritorio y celular
 vistaMovil.addEventListener('change', () => {
     if (!mostrandoTodos) {
         renderGaleria();
     }
 });
 
-// Pinta la galería cuando el archivo termina de cargar
+
+/* INICIO */
+
+// Genera la galería cuando termina de cargar el archivo
 renderGaleria();
