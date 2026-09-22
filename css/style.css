@@ -168,7 +168,7 @@ button {
 }
 
 .site-logo span {
-    color: var(--color-primary);
+    color: var(--color-heading);
 }
 
 
@@ -1388,4 +1388,197 @@ body.dialog-open {
     font-size: 0.8rem;
     font-weight: 700;
     line-height: 1.2;
+}
+
+/* ==================================================
+   CONTACT
+   ================================================== */
+
+.contact-section {
+    display: flex;
+    align-items: center;
+
+    min-height: calc(100svh - 4rem);
+    padding: 3rem 1rem 2rem;
+}
+
+.contact-container {
+    display: grid;
+    gap: 2.5rem;
+
+    width: 100%;
+    max-width: 70rem;
+    margin-inline: auto;
+}
+
+/* ==================================================
+   CONTACT INTRO
+   ================================================== */
+
+.contact-intro {
+    max-width: 38rem;
+}
+
+.contact-title {
+    margin: 0;
+
+    color: var(--color-heading);
+
+    font-family: var(--font-title);
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.contact-description {
+    max-width: 34rem;
+    margin: 1rem 0 0;
+
+    color: var(--color-text);
+
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* ==================================================
+   CONTACT FORM
+   ================================================== */
+
+.contact-form {
+    display: grid;
+    gap: 1.25rem;
+
+    padding: 1.25rem;
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+}
+
+.contact-field {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.contact-field label {
+    color: var(--color-heading);
+
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.contact-field input,
+.contact-field textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+
+    color: var(--color-text);
+    background-color: transparent;
+
+    font: inherit;
+    line-height: 1.5;
+
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    outline: none;
+
+    transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.contact-field textarea {
+    min-height: 9rem;
+
+    resize: none;
+}
+
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+    color: var(--color-text);
+    opacity: 0.6;
+}
+
+.contact-field input:hover,
+.contact-field textarea:hover {
+    border-color: var(--color-primary);
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.2rem
+        color-mix(in srgb, var(--color-primary) 18%, transparent);
+}
+
+/* ==================================================
+   CONTACT BUTTON
+   ================================================== */
+
+.contact-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.8rem 1.25rem;
+
+    color: var(--color-surface);
+    background-color: var(--color-primary);
+
+    font: inherit;
+    font-weight: 700;
+
+    border: 1px solid var(--color-primary);
+    border-radius: 999px;
+    cursor: pointer;
+
+    transition:
+        transform 180ms ease,
+        filter 180ms ease;
+}
+
+.contact-submit:hover {
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+}
+
+.contact-submit:active {
+    transform: translateY(0);
+}
+
+.contact-submit:focus-visible {
+    outline: 0.2rem solid var(--color-primary);
+    outline-offset: 0.2rem;
+}
+
+.contact-submit:disabled {
+    cursor: wait;
+    opacity: 0.7;
+    transform: none;
+}
+
+/* ==================================================
+   CONTACT STATUS
+   ================================================== */
+
+.contact-status {
+    min-height: 1.5rem;
+    margin: 0;
+
+    color: var(--color-text);
+
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.contact-status.is-success {
+    color: var(--color-primary);
+}
+
+.contact-status.is-error {
+    color: #d9534f;
 }

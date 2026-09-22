@@ -264,6 +264,30 @@
     .project-case-technologies ul {
         justify-content: center;
     }
+
+    /* ==================================================
+       CONTACT
+       ================================================== */
+
+    .contact-section {
+        padding-inline: 2rem;
+    }
+
+    .contact-container {
+        grid-template-columns:
+            minmax(0, 0.85fr)
+            minmax(0, 1.15fr);
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .contact-intro {
+        align-self: center;
+    }
+
+    .contact-form {
+        padding: 1.75rem;
+    }
 }
 
 
@@ -278,7 +302,7 @@
     .header-container {
         display: grid;
         grid-template-columns: auto 1fr auto;
-        gap: 1.5rem;
+        gap: 0.75rem;
     }
 
     .site-logo {
@@ -290,7 +314,7 @@
         position: static;
         grid-column: 2;
         grid-row: 1;
-        justify-self: center;
+        justify-self: end;
 
         width: auto;
         padding: 0;
@@ -376,6 +400,27 @@
     .project-dialog-map {
         height: 28rem;
     }
+
+    /* ==================================================
+       CONTACT
+       ================================================== */
+    .contact-section {
+        padding-block: 3rem;
+    }
+
+    .contact-container {
+        gap: 5rem;
+    }
+
+    .contact-description {
+        max-width: 28rem;
+
+        font-size: 1.05rem;
+    }
+
+    .contact-form {
+        padding: 2rem;
+    }
 }
 
 /* ==================================================
@@ -388,5 +433,13 @@
 
     .project-card {
         flex-basis: calc((100% - 3.75rem) / 4);
+    }
+
+    /* ==================================================
+       CONTACT
+       ================================================== */
+    .contact-container {
+        max-width: 72rem;
+        gap: 6rem;
     }
 }

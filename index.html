@@ -151,7 +151,7 @@
                         <a
                             class="button button-secondary"
                             href="documentos/CV Angel Avila 2026.pdf"
-                            download
+                            target="_blank"
                         >
                             Descargar CV
                         </a>
@@ -617,16 +617,101 @@
             </div>
         </dialog>
 
-        <!-- Capacidades profesionales -->
-        <section id="capabilities" class="capabilities-section">
-        </section>
-
-        <!-- Trayectoria profesional -->
-        <section id="experience" class="experience-section">
-        </section>
-
         <!-- Formulario y medios de contacto -->
         <section id="contact" class="contact-section">
+            <div class="contact-container">
+
+                <!-- Presentación -->
+                <div class="contact-intro">
+
+                    <h2 class="contact-title">
+                        Conversemos
+                    </h2>
+
+                    <p class="contact-description">
+                        Si tienes un proyecto o necesitas
+                        mejorar un flujo de trabajo GIS, puedes escribirme.
+                    </p>
+
+                </div>
+
+                <!-- Formulario -->
+                <form
+                    id="contact-form"
+                    class="contact-form"
+                    action="https://formsubmit.co/ajax/awavila03@gmail.com"
+                    method="POST"
+                >
+                    <input
+                        type="hidden"
+                        name="_subject"
+                        value="Nuevo mensaje desde GEOAVILA"
+                    >
+
+                    <div class="contact-field">
+                        <label for="contact-name">Nombre</label>
+
+                        <input
+                            id="contact-name"
+                            name="name"
+                            type="text"
+                            placeholder="¿Cómo te llamas?"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div class="contact-field">
+                        <label for="contact-email">Correo</label>
+
+                        <input
+                            id="contact-email"
+                            name="email"
+                            type="email"
+                            placeholder="nombre@correo.com"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="contact-field">
+                        <label for="contact-subject">Asunto</label>
+
+                        <input
+                            id="contact-subject"
+                            name="subject"
+                            type="text"
+                            placeholder="¿En qué puedo ayudarte?"
+                            required
+                        >
+                    </div>
+
+                    <div class="contact-field">
+                        <label for="contact-message">Mensaje</label>
+
+                        <textarea
+                            id="contact-message"
+                            name="message"
+                            rows="6"
+                            placeholder="Cuéntame brevemente sobre tu proyecto u oportunidad."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button class="contact-submit" type="submit">
+                        <span>Enviar mensaje</span>
+                        <span aria-hidden="true">→</span>
+                    </button>
+
+                    <p
+                        id="contact-status"
+                        class="contact-status"
+                        role="status"
+                        aria-live="polite"
+                    ></p>
+                </form>
+
+            </div>
         </section>
 
     </main>
