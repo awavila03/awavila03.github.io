@@ -288,6 +288,24 @@
     .contact-form {
         padding: 1.75rem;
     }
+
+
+    /* Footer */
+
+    .footer-container {
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        align-items: center;
+
+        text-align: left;
+    }
+
+    .footer-copy {
+        justify-self: center;
+    }
+
+    .footer-top-link {
+        justify-self: end;
+    }
 }
 
 
@@ -405,6 +423,12 @@
        CONTACT
        ================================================== */
     .contact-section {
+        min-height: calc(
+            100svh
+            - var(--header-height)
+            - var(--footer-height)
+        );
+
         padding-block: 3rem;
     }
 
@@ -420,6 +444,17 @@
 
     .contact-form {
         padding: 2rem;
+    }
+
+    /* Footer */
+
+    .site-footer {
+        height: var(--footer-height);
+    }
+
+    .footer-container {
+        height: 100%;
+        padding-block: 1.5rem;
     }
 }
 
