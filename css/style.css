@@ -50,7 +50,7 @@
    Se activará mediante JavaScript
    ================================================== */
 
-body.light-theme {
+:root.light-theme {
     color-scheme: light;
 
     /* Fondos y superficies */

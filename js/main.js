@@ -73,6 +73,7 @@ document.addEventListener("keydown", (event) => {
    CAMBIO DE TEMA
    ================================================== */
 
+const rootElement = document.documentElement;
 const themeToggle = document.querySelector("#theme-toggle");
 const themeIcon = document.querySelector(".theme-icon");
 const savedTheme = localStorage.getItem("geoavila-theme");
@@ -81,13 +82,15 @@ const savedTheme = localStorage.getItem("geoavila-theme");
 function applyTheme(theme) {
     const isLightTheme = theme === "light";
 
-    document.body.classList.toggle("light-theme", isLightTheme);
+    rootElement.classList.toggle("light-theme", isLightTheme);
 
     themeIcon.textContent = isLightTheme ? "☾" : "☀";
 
     themeToggle.setAttribute(
         "aria-label",
-        isLightTheme ? "Activar tema oscuro" : "Activar tema claro"
+        isLightTheme
+            ? "Activar tema oscuro"
+            : "Activar tema claro"
     );
 }
 
@@ -100,16 +103,21 @@ applyTheme(savedTheme ?? "dark");
 /* Cambiar y guardar el tema */
 
 themeToggle.addEventListener("click", () => {
-    const isLightTheme = document.body.classList.contains("light-theme");
+    const isLightTheme =
+        rootElement.classList.contains("light-theme");
+
     const newTheme = isLightTheme ? "dark" : "light";
 
     applyTheme(newTheme);
     localStorage.setItem("geoavila-theme", newTheme);
 });
 
+
 /* Cerrar el menú al pasar a escritorio */
 
-const desktopBreakpoint = window.matchMedia("(min-width: 1024px)");
+const desktopBreakpoint = window.matchMedia(
+    "(min-width: 1024px)"
+);
 
 desktopBreakpoint.addEventListener("change", (event) => {
     if (event.matches) {
