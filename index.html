@@ -25,9 +25,14 @@
 
     <!-- Estilos principales -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/leaflet.css">
 
     <!-- Estilos responsivos -->
     <link rel="stylesheet" href="css/responsive.css">
+
+    <script src="js/leaflet.js"></script>
+    <script src="js/proyectos-data.js" defer></script>
+    <script src="js/portafolio.js" defer></script>
 
     <!-- JavaScript principal -->
     <script src="js/main.js" defer></script>
@@ -93,7 +98,6 @@
                     <li><a class="navigation-link" href="#sobre-mi">Sobre mí</a></li>
                     <li><a class="navigation-link" href="#workflow">Workflow</a></li>
                     <li><a class="navigation-link" href="#projects">Proyectos</a></li>
-                    <li><a class="navigation-link" href="#experience">Experiencia</a></li>
                     <li><a class="navigation-link" href="#contact">Contacto</a></li>
                 </ul>
             </nav>
@@ -378,8 +382,240 @@
         </section>
 
         <!-- Proyectos seleccionados -->
-        <section id="projects" class="projects-section">
+        <section
+            id="projects"
+            class="projects-section"
+            aria-labelledby="projects-title"
+        >
+            <div class="contenedor-seccion">
+
+                <!-- Encabezado de la sección -->
+                <header class="encabezado-seccion">
+                    <h2 class="titulo-seccion" id="projects-title">
+                        Proyectos
+                    </h2>
+
+                    <p class="descripcion-seccion">
+                        Estos proyectos muestran cómo he aplicado GIS ante distintos
+                        retos de infraestructura, equipos de trabajo y condiciones
+                        de campo.
+                    </p>
+                </header>
+
+                <!-- Carrusel de proyectos -->
+                <div
+                    class="projects-carousel"
+                    aria-label="Proyectos profesionales seleccionados"
+                >
+                    <!-- Ventana visible del carrusel -->
+                    <div class="projects-viewport">
+                        <div class="projects-list" id="projects-list">
+                            <!-- Las tarjetas se generarán desde proyectos-data.js -->
+                        </div>
+                    </div>
+
+                    <!-- Controles del carrusel -->
+                    <div class="projects-controls">
+
+                        <button
+                            class="projects-button"
+                            id="projects-previous"
+                            type="button"
+                            aria-label="Mostrar proyectos anteriores"
+                            disabled
+                        >
+                            <i
+                                class="fa-solid fa-chevron-left"
+                                aria-hidden="true"
+                            ></i>
+                        </button>
+
+                        <div
+                            class="projects-pagination"
+                            id="projects-pagination"
+                            aria-label="Paginación de proyectos"
+                        ></div>
+
+                        <button
+                            class="projects-button"
+                            id="projects-next"
+                            type="button"
+                            aria-label="Mostrar proyectos siguientes"
+                        >
+                            <i
+                                class="fa-solid fa-chevron-right"
+                                aria-hidden="true"
+                            ></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
         </section>
+
+        <!-- Detalle del proyecto -->
+        <dialog
+            class="project-dialog"
+            id="project-dialog"
+            aria-labelledby="project-dialog-title"
+            aria-describedby="project-dialog-tagline"
+        >
+            <div class="project-dialog-container">
+
+                <!-- Cerrar detalle -->
+                <button
+                    class="project-dialog-close"
+                    id="project-dialog-close"
+                    type="button"
+                    aria-label="Cerrar detalle del proyecto"
+                >
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+
+                <!-- Contenido narrativo del caso -->
+                <article class="project-dialog-content">
+
+                    <!-- Apertura del caso -->
+                    <header class="project-case-header">
+
+                        <div class="project-case-heading">
+                            <p
+                                class="project-dialog-category"
+                                id="project-dialog-category"
+                            ></p>
+
+                            <h2
+                                class="project-dialog-title"
+                                id="project-dialog-title"
+                            ></h2>
+
+                            <p
+                                class="project-dialog-tagline"
+                                id="project-dialog-tagline"
+                            ></p>
+                        </div>
+
+                        <figure class="project-dialog-image">
+                            <img
+                                id="project-dialog-image"
+                                src=""
+                                alt=""
+                            >
+                        </figure>
+
+                    </header>
+
+                    <!-- Información secundaria -->
+                    <dl class="project-case-metadata">
+
+                        <div>
+                            <dt>Periodo</dt>
+                            <dd id="project-dialog-dates"></dd>
+                        </div>
+
+                        <div>
+                            <dt>Cliente</dt>
+                            <dd id="project-dialog-client"></dd>
+                        </div>
+
+                        <div>
+                            <dt>Empresa</dt>
+                            <dd id="project-dialog-company"></dd>
+                        </div>
+
+                        <div>
+                            <dt>Rol</dt>
+                            <dd id="project-dialog-role"></dd>
+                        </div>
+
+                    </dl>
+
+                    <!-- Contexto espacial del proyecto -->
+                    <section
+                        class="project-case-map"
+                        aria-labelledby="project-map-title"
+                        hidden
+                    >
+                        <header class="project-case-map-header">
+                            <h3 id="project-map-title">Contexto espacial</h3>
+
+                            <p>
+                                Ubicación y alcance territorial del proyecto.
+                            </p>
+                        </header>
+
+                        <div
+                            class="project-dialog-map"
+                            id="project-dialog-map"
+                            role="region"
+                            aria-label="Mapa del proyecto"
+                        ></div>
+                    </section>
+
+                    <!-- Narrativa del proyecto -->
+                    <div class="project-case-narrative">
+
+                        <section class="project-case-section">
+                            <p class="project-case-number" aria-hidden="true">
+                                01
+                            </p>
+
+                            <div>
+                                <h3>El reto</h3>
+                                <p id="project-dialog-challenge"></p>
+                            </div>
+                        </section>
+
+                        <section class="project-case-section">
+                            <p class="project-case-number" aria-hidden="true">
+                                02
+                            </p>
+
+                            <div>
+                                <h3>Mi aporte</h3>
+                                <p id="project-dialog-contribution"></p>
+                            </div>
+                        </section>
+
+                        <section class="project-case-section">
+                            <p class="project-case-number" aria-hidden="true">
+                                03
+                            </p>
+
+                            <div>
+                                <h3>La solución GIS</h3>
+                                <ul
+                                    class="project-case-solution"
+                                    id="project-dialog-solution"
+                                ></ul>
+                            </div>
+                        </section>
+
+                        <section class="project-case-section">
+                            <p class="project-case-number" aria-hidden="true">
+                                04
+                            </p>
+
+                            <div>
+                                <h3>El resultado</h3>
+                                <p id="project-dialog-outcome"></p>
+                            </div>
+                        </section>
+
+                    </div>
+
+                    <!-- Tecnologías aplicadas -->
+                    <section class="project-case-technologies">
+                        <h3>Tecnologías aplicadas</h3>
+
+                        <ul id="project-dialog-technologies"></ul>
+                    </section>
+
+                </article>
+            </div>
+        </dialog>
 
         <!-- Capacidades profesionales -->
         <section id="capabilities" class="capabilities-section">

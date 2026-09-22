@@ -116,6 +116,154 @@
     .descripcion-seccion {
         max-width: none;
     }
+
+    /* Proyectos — dos tarjetas visibles */
+    .project-card {
+        flex-basis: calc((100% - 1.25rem) / 2);
+    }
+
+
+    /* ========================
+       PROJECT DIALOG
+       ======================== */
+    .project-dialog {
+        width: calc(100% - 4rem);
+        max-height: calc(100dvh - 4rem);
+        border-radius: 1.5rem;
+    }
+
+    .project-dialog-container {
+        max-height: calc(100dvh - 4rem);
+    }
+
+    .project-dialog-close {
+        top: 1.5rem;
+        margin:
+            1.5rem
+            1.5rem
+            -4.25rem
+            auto;
+    }
+
+
+    /* ==================================================
+       PROJECT CASE HEADER
+       ================================================== */
+
+    .project-dialog-content {
+        padding: 2rem;
+    }
+
+    .project-dialog-title {
+        font-size: clamp(2.1rem, 5vw, 2.75rem);
+    }
+
+    .project-case-header {
+        gap: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .project-case-heading {
+        padding-top: 0.5rem;
+        padding-right: 4rem;
+    }
+
+    .project-dialog-image img {
+        aspect-ratio: 16 / 9;
+    }
+
+
+    /* ==================================================
+       PROJECT CASE METADATA
+       ================================================== */
+
+    .project-case-metadata {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem 2rem;
+        padding-block: 2rem;
+    }
+
+    /* ==================================================
+       PROJECT CASE MAP
+       ================================================== */
+    .project-case-map {
+        padding-block: 2rem;
+    }
+
+    .project-case-map-header {
+        margin-bottom: 1.25rem;
+    }
+
+    .project-dialog-map {
+        height: 24rem;
+    }
+
+    /* ==================================================
+       PROJECT CASE NARRATIVE
+       ================================================== */
+
+    .project-case-narrative {
+        padding-block: 2rem;
+    }
+
+    .project-case-section {
+        grid-template-columns: 3.5rem minmax(0, 1fr);
+        align-items: start;
+        gap: 1.5rem;
+
+        padding-block: 2rem;
+    }
+
+    /*
+    Desde tablet se restaura el contenedor interno,
+    recuperando la sangría editorial.
+    */
+    .project-case-section > div {
+        display: block;
+        min-width: 0;
+    }
+
+    .project-case-number {
+        align-self: start;
+
+        padding-top: 0.2rem;
+
+        font-size: 1.25rem;
+    }
+
+    .project-case-section h3 {
+        grid-column: auto;
+        align-self: auto;
+
+        margin: 0 0 0.75rem;
+
+        font-size: 1.6rem;
+    }
+
+    .project-case-section p:not(.project-case-number),
+    .project-case-solution {
+        grid-column: auto;
+    }
+
+    .project-case-section p:not(.project-case-number),
+    .project-case-solution li {
+        font-size: 1rem;
+    }
+
+    /* ==================================================
+       PROJECT CASE TECHNOLOGIES
+       ================================================== */
+    .project-case-technologies {
+        grid-template-columns: minmax(10rem, 0.3fr) minmax(0, 1fr);
+        align-items: center;
+        gap: 2rem;
+
+        padding: 2rem;
+    }
+
+    .project-case-technologies ul {
+        justify-content: center;
+    }
 }
 
 
@@ -182,6 +330,52 @@
         color: var(--color-primary);
         border-color: var(--color-primary);
     }
+
+    /* Proyectos — tres tarjetas visibles */
+    .project-card {
+        flex-basis: calc((100% - 2.5rem) / 3);
+    }
+
+    /* PROJECT CASE HEADER */
+    .project-case-header {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        align-items: stretch;
+    }
+
+    .project-case-heading {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        padding-right: 0;
+    }
+
+    .project-dialog-title {
+        font-size: clamp(2.25rem, 3.5vw, 3.25rem);
+    }
+
+    .project-dialog-tagline {
+        font-size: 1.075rem;
+    }
+
+    .project-dialog-image {
+        min-height: 25rem;
+    }
+
+    .project-dialog-image img {
+        height: 100%;
+        aspect-ratio: auto;
+    }
+
+    /* PROJECT CASE METADATA */
+    .project-case-metadata {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    /* PROJECT CASE MAP */
+    .project-dialog-map {
+        height: 28rem;
+    }
 }
 
 /* ==================================================
@@ -189,4 +383,10 @@
    ================================================== */
 
 @media (min-width: 1280px) {
+
+    /* Proyectos — cuatro tarjetas visibles */
+
+    .project-card {
+        flex-basis: calc((100% - 3.75rem) / 4);
+    }
 }
