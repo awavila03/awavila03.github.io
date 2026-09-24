@@ -42,6 +42,9 @@
     /* Efectos */
     --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.22);
     --transition: 200ms ease;
+
+    /* Decoración del hero */
+    --hero-contour-color: rgba(28, 182, 152, 0.08);
 }
 
 
@@ -70,6 +73,9 @@
 
     /* Efectos */
     --shadow-soft: 0 12px 30px rgba(23, 33, 31, 0.10);
+
+    /* Decoración del hero */
+    --hero-contour-color: rgba(15, 116, 95, 0.08);
 }
 
 
@@ -308,33 +314,78 @@ button {
 
 .hero {
     position: relative;
+    isolation: isolate;
+
     display: grid;
+
     min-height: calc(100vh - var(--header-height));
     min-height: calc(100dvh - var(--header-height));
+
     overflow: hidden;
 }
 
+
+/* Resplandor decorativo */
+
 .hero::before {
     content: "";
+
     position: absolute;
     top: -8rem;
     right: -10rem;
+    z-index: 0;
+
     width: 22rem;
     aspect-ratio: 1;
+
     background-color: rgba(28, 182, 152, 0.12);
     border-radius: 50%;
     filter: blur(90px);
+
     pointer-events: none;
 }
+
+
+/* Fondo cartográfico vectorial */
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    background-color: var(--hero-contour-color);
+
+    -webkit-mask-image: url("../images/hero-cartography.svg");
+    mask-image: url("../images/hero-cartography.svg");
+
+    -webkit-mask-position: center;
+    mask-position: center;
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    -webkit-mask-size: cover;
+    mask-size: cover;
+
+    pointer-events: none;
+
+    transition: background-color var(--transition);
+}
+
 
 .hero-container {
     position: relative;
     z-index: 1;
+
     display: grid;
     align-content: space-evenly;
     gap: 1rem;
+
     width: min(calc(100% - 2rem), var(--content-width));
     min-height: inherit;
+
     padding-block: 1.25rem;
     margin-inline: auto;
 }
@@ -348,7 +399,9 @@ button {
 
 .hero-eyebrow {
     margin-bottom: 0.65rem;
+
     color: var(--color-text);
+
     font-size: 0.75rem;
     font-weight: 700;
     line-height: 1.4;
@@ -358,7 +411,9 @@ button {
 
 .hero-title {
     max-width: 13ch;
+
     color: var(--color-heading);
+
     font-size: clamp(2rem, 8vw, 2.7rem);
     line-height: 1.08;
 }
@@ -366,6 +421,7 @@ button {
 .hero-statement {
     max-width: 38rem;
     margin-top: 1rem;
+
     font-size: 1.05rem;
     font-weight: 600;
     line-height: 1.5;
@@ -374,9 +430,24 @@ button {
 .hero-description {
     max-width: 38rem;
     margin-top: 0.8rem;
+
     color: var(--color-description);
+
     font-size: 1rem;
     line-height: 1.65;
+}
+
+/* Halo para separar los textos del fondo cartográfico */
+
+.hero-eyebrow,
+.hero-title,
+.hero-statement,
+.hero-description {
+    text-shadow:
+        0 0 3px var(--color-background),
+        0 0 6px var(--color-background),
+        0 0 10px var(--color-background),
+        0 0 16px var(--color-background);
 }
 
 
@@ -385,6 +456,7 @@ button {
 .hero-actions {
     display: flex;
     gap: 0.65rem;
+
     width: 100%;
     margin-top: 1.25rem;
 }
@@ -394,14 +466,18 @@ button {
     flex: 1;
     align-items: center;
     justify-content: center;
+
     width: auto;
     min-height: 44px;
     padding: 0.65rem 0.75rem;
+
     font-size: 0.88rem;
     font-weight: 600;
     text-align: center;
+
     border: 1px solid transparent;
     border-radius: 10px;
+
     transition:
         color var(--transition),
         background-color var(--transition),
@@ -429,12 +505,16 @@ button {
 
 .button-secondary {
     color: var(--color-text);
-    background-color: transparent;
+    background-color: var(--color-background);
     border-color: var(--color-border);
+
+    /* Evita que las líneas rocen visualmente el borde. */
+    box-shadow: 0 0 0 2px var(--color-background);
 }
 
 .button-secondary:hover {
     color: var(--color-primary);
+    background-color: var(--color-surface);
     border-color: var(--color-primary);
 }
 
@@ -445,18 +525,26 @@ button {
     display: flex;
     justify-content: center;
     gap: 0.75rem;
+
     margin-top: 2rem;
 }
 
 .hero-socials a {
     display: grid;
     place-items: center;
+
     width: 40px;
     height: 40px;
+
     color: var(--color-text);
-    background-color: transparent;
+    background-color: var(--color-background);
+
     border: 1px solid var(--color-text-muted);
     border-radius: 50%;
+
+    /* Forma una pequeña zona limpia alrededor del círculo. */
+    box-shadow: 0 0 0 2px var(--color-background);
+
     transition:
         color var(--transition),
         background-color var(--transition),
@@ -467,6 +555,7 @@ button {
 .hero-socials a:hover,
 .hero-socials a:focus-visible {
     color: var(--color-primary);
+    background-color: var(--color-surface);
     border-color: var(--color-primary);
     transform: translateY(-2px);
 }
@@ -482,25 +571,32 @@ button {
 .hero-image-frame {
     position: relative;
     isolation: isolate;
+
     aspect-ratio: 1;
 }
 
 .hero-image-frame::before {
     content: "";
+
     position: absolute;
     inset: 0.45rem -0.45rem -0.45rem 0.45rem;
     z-index: -1;
+
     border: 2px solid var(--color-primary);
     border-radius: 28px;
+
     opacity: 0.65;
 }
 
 .hero-image {
     width: 100%;
     height: 100%;
+
     object-fit: cover;
     object-position: center;
+
     background-color: var(--color-surface);
+
     border: 1px solid var(--color-border);
     border-radius: 28px;
     box-shadow: var(--shadow-soft);
